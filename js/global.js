@@ -39,20 +39,7 @@
       }
     }
 
-    /* ---- Wave Ripple (only when custom cursor is active) ---- */
-    var lastRippleTime = 0;
-    document.addEventListener('mousemove', function (e) {
-      var now = Date.now();
-      if (now - lastRippleTime > 80) {
-        var ripple = document.createElement('div');
-        ripple.className = 'wave-ripple';
-        ripple.style.left = e.clientX + 'px';
-        ripple.style.top = e.clientY + 'px';
-        document.body.appendChild(ripple);
-        setTimeout(function () { ripple.remove(); }, 800);
-        lastRippleTime = now;
-      }
-    });
+
   }
 
   /* ---- Fade-In Observer ---- */

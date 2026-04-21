@@ -71,23 +71,7 @@ body {
   transition: transform .15s ease-out, width .3s, height .3s;
 }
 
-/* WAVE RIPPLE */
-.wave-ripple {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  border: 1px solid rgba(184, 160, 112, 0.25);
-  animation: waveExpand 0.8s ease-out forwards;
-  z-index: 9997;
-}
 
-@keyframes waveExpand {
-  0%   { opacity: 0.5; transform: translate(-50%, -50%) scale(0.5); }
-  100% { opacity: 0;   transform: translate(-50%, -50%) scale(3); }
-}
 
 /* SKIP-TO-CONTENT LINK */
 .skip-link {
