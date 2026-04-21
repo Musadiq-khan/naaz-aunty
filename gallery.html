@@ -1,323 +1,196 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gallery â€” Dr. Aishath Ali Naaz</title>
-
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-
-:root{
---black:#0a0a0a;
---white:#ffffff;
---accent:#b8a070;
---mid:#888880;
-}
-
-body{
-font-family:'Jost',sans-serif;
-background:var(--black);
-color:var(--white);
-overflow:hidden;
-min-height:100vh;
-}
-
-/* NAV */
-nav{
-position:fixed;
-top:0;
-left:0;
-right:0;
-z-index:100;
-padding:28px 56px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-mix-blend-mode:difference;
-}
-
-.nav-logo{
-font-family:'EB Garamond',serif;
-font-size:.95rem;
-font-weight:400;
-letter-spacing:.12em;
-text-transform:uppercase;
-text-decoration:none;
-color:white;
-}
-
-.nav-links{
-display:flex;
-gap:36px;
-list-style:none;
-}
-
-.nav-links a{
-color:white;
-text-decoration:none;
-font-size:.72rem;
-font-weight:300;
-opacity:.6;
-letter-spacing:.18em;
-text-transform:uppercase;
-}
-
-.nav-links a.active,
-.nav-links a:hover{opacity:1;}
-
-/* GALLERY */
-#gallery-main{
-height:100vh;
-position:relative;
-overflow:hidden;
-padding-top:120px;
-transition:opacity .3s ease;
-}
-
-#image-track{
-display:flex;
-gap:4vmin;
-position:absolute;
-left:50%;
-top:50%;
-transform:translate(0%, -50%);
-will-change:transform;
-user-select:none;
-touch-action:pan-y;
-cursor:grab;
-contain:layout paint style;
-}
-
-#image-track:active{
-cursor:grabbing;
-}
-
-#image-track > .image{
-width:34vmin;
-height:48vmin;
-object-fit:cover;
-object-position:100% center;
-border-radius:6px;
-transition:transform .35s ease, filter .35s ease;
-will-change:transform, object-position;
-background:rgba(255,255,255,.06);
-}
-
-#image-track > .image:hover{
-transform:scale(1.03);
-filter:brightness(1.05);
-}
-
-/* LIGHTBOX */
-#lightbox{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.92);
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:9999;
-opacity:0;
-pointer-events:none;
-transition:opacity .4s ease;
-}
-
-#lightbox.active{
-opacity:1;
-pointer-events:all;
-}
-
-#lightbox img{
-max-width:90vw;
-max-height:85vh;
-transform:scale(.9);
-transition:transform .4s ease;
-}
-
-#lightbox.active img{
-transform:scale(1);
-}
-
-body.lightbox-open #gallery-main{
-opacity:.3;
-transition:opacity .3s ease;
-}
-
-/* MOBILE */
-@media(max-width:900px){
-nav { padding:20px 24px; }
-.nav-links{display:none;}
-#gallery-main { padding-top: 100px; }
-#image-track > .image{
-width:56vw;
-height:72vw;
-}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery &mdash; Dr. Aishath Ali Naaz</title>
+  <meta name="description" content="Photo gallery showcasing Dr. Aishath Ali Naaz's career &mdash; conferences, community outreach, clinical practice, and media appearances across the Maldives and internationally.">
+  <meta property="og:title" content="Gallery &mdash; Dr. Aishath Ali Naaz">
+  <meta property="og:description" content="Photo gallery of Dr. Aishath Ali Naaz's career highlights across 25+ years of clinical practice and advocacy.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <link rel="canonical" href="gallery.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/gallery.css">
+  <noscript><style>.fade-in{opacity:1!important}body{cursor:auto!important}</style></noscript>
 </head>
-
 <body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
 
-<nav>
-<a href="index.html" class="nav-logo">Dr. Aishath Ali Naaz</a>
-<ul class="nav-links">
-<li><a href="index.html">Home</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="services.html">Services</a></li>
-<li><a href="gallery.html" class="active">Gallery</a></li>
-<li><a href="contact.html">Contact</a></li>
-</ul>
-</nav>
+  <nav aria-label="Main navigation">
+    <a href="index.html" class="nav-logo">Dr. Aishath Ali Naaz</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="gallery.html" class="active">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
-<section id="gallery-main">
-<div id="image-track">
-</div>
-</section>
+  <main id="main-content">
+    <h1 class="sr-only">Photo Gallery &mdash; Dr. Aishath Ali Naaz</h1>
+    <section id="gallery-main">
+      <div id="image-track">
+        <!-- Images populated via JavaScript below -->
+        <!-- TODO: Replace stock Unsplash images with real photos of Dr. Naaz -->
+      </div>
+    </section>
+  </main>
 
-<!-- LIGHTBOX -->
-<div id="lightbox">
-<img id="lightbox-img">
-</div>
+  <!-- LIGHTBOX -->
+  <div id="lightbox" role="dialog" aria-label="Image lightbox" aria-modal="true">
+    <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+    <img id="lightbox-img" alt="">
+  </div>
 
-<script>
-const track = document.getElementById("image-track");
-const galleryImages = [
-  { id: "1529156069898-49953e39b3ac", alt: "Soft pastel flowers on a dark background" },
-  { id: "1500530855697-b586d89ba3ee", alt: "Mountain landscape at sunrise" },
-  { id: "1521737604893-d14cc237f11d", alt: "Team collaboration around a table" },
-  { id: "1544717305-2782549b5136", alt: "Portrait in warm natural light" },
-  { id: "1492724441997-5dc865305da7", alt: "Creative studio workspace" },
-  { id: "1507525428034-b723cf961d3e", alt: "Ocean waves at golden hour" },
-  { id: "1470770841072-f978cf4d019e", alt: "Misty forest and lake" },
-  { id: "1501785888041-af3ef285b470", alt: "Snowy mountain range panorama" },
-  { id: "1491553895911-0055eca6402d", alt: "Desert road under dramatic sky" },
-  { id: "1500534314209-a25ddb2bd429", alt: "Field landscape with clouds" }
-];
+  <footer>&copy; 2025 &middot; Dr. Aishath Ali Naaz &middot; Consultant Clinical Psychologist &middot; Maldives</footer>
 
-const buildUnsplashUrl = (id, width = 1200, quality = 72) =>
-  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${width}&q=${quality}`;
+  <script src="js/global.js"></script>
+  <script>
+    /* ---- Gallery-specific JavaScript ---- */
+    var track = document.getElementById('image-track');
 
-const createImageNode = ({ id, alt }, index) => {
-  const img = document.createElement("img");
-  img.className = "image";
-  img.alt = alt;
-  img.draggable = false;
-  img.width = 480;
-  img.height = 680;
-  img.loading = index < 2 ? "eager" : "lazy";
-  img.decoding = "async";
-  if (index === 0) {
-    img.fetchPriority = "high";
-  }
-  img.src = buildUnsplashUrl(id, 1200, 72);
-  img.srcset = `${buildUnsplashUrl(id, 600, 70)} 600w, ${buildUnsplashUrl(id, 1200, 72)} 1200w`;
-  img.sizes = "(max-width: 900px) 56vw, 34vmin";
-  return img;
-};
+    /* TODO: Replace these stock images with real photos of Dr. Naaz —
+       conference speaking, MIPSTAR facility, TV appearances, awards, etc. */
+    var galleryImages = [
+      { id: '1529156069898-49953e39b3ac', alt: 'Soft pastel flowers on a dark background' },
+      { id: '1500530855697-b586d89ba3ee', alt: 'Mountain landscape at sunrise' },
+      { id: '1521737604893-d14cc237f11d', alt: 'Team collaboration around a table' },
+      { id: '1544717305-2782549b5136', alt: 'Portrait in warm natural light' },
+      { id: '1492724441997-5dc865305da7', alt: 'Creative studio workspace' },
+      { id: '1507525428034-b723cf961d3e', alt: 'Ocean waves at golden hour' },
+      { id: '1470770841072-f978cf4d019e', alt: 'Misty forest and lake' },
+      { id: '1501785888041-af3ef285b470', alt: 'Snowy mountain range panorama' },
+      { id: '1491553895911-0055eca6402d', alt: 'Desert road under dramatic sky' },
+      { id: '1500534314209-a25ddb2bd429', alt: 'Field landscape with clouds' }
+    ];
 
-const initGallery = () => {
-  const fragment = document.createDocumentFragment();
-  galleryImages.forEach((image, index) => fragment.appendChild(createImageNode(image, index)));
-  track.appendChild(fragment);
-};
+    var buildUnsplashUrl = function (id, width, quality) {
+      width = width || 1200;
+      quality = quality || 72;
+      return 'https://images.unsplash.com/photo-' + id + '?auto=format&fit=crop&w=' + width + '&q=' + quality;
+    };
 
-initGallery();
+    var createImageNode = function (data, index) {
+      var img = document.createElement('img');
+      img.className = 'image';
+      img.alt = data.alt;
+      img.draggable = false;
+      img.width = 480;
+      img.height = 680;
+      img.loading = index < 2 ? 'eager' : 'lazy';
+      img.decoding = 'async';
+      if (index === 0) img.fetchPriority = 'high';
+      img.src = buildUnsplashUrl(data.id, 1200, 72);
+      img.srcset = buildUnsplashUrl(data.id, 600, 70) + ' 600w, ' + buildUnsplashUrl(data.id, 1200, 72) + ' 1200w';
+      img.sizes = '(max-width: 900px) 56vw, 34vmin';
+      return img;
+    };
 
-let dragged = false;
-let pointerDownAt = 0;
-let prevPercentage = 0;
-let targetPercentage = 0;
-let currentPercentage = 0;
-let rafId = null;
+    var fragment = document.createDocumentFragment();
+    galleryImages.forEach(function (image, index) {
+      fragment.appendChild(createImageNode(image, index));
+    });
+    track.appendChild(fragment);
 
-const clamp = (num, min, max) => Math.max(min, Math.min(num, max));
+    /* ---- Drag Scroll ---- */
+    var dragged = false;
+    var pointerDownAt = 0;
+    var prevPercentage = 0;
+    var targetPercentage = 0;
+    var currentPercentage = 0;
+    var rafId = null;
 
-const renderTrack = () => {
-  currentPercentage += (targetPercentage - currentPercentage) * 0.14;
+    var clamp = function (num, min, max) {
+      return Math.max(min, Math.min(num, max));
+    };
 
-  if (Math.abs(targetPercentage - currentPercentage) < 0.01) {
-    currentPercentage = targetPercentage;
-  }
+    var renderTrack = function () {
+      currentPercentage += (targetPercentage - currentPercentage) * 0.14;
+      if (Math.abs(targetPercentage - currentPercentage) < 0.01) {
+        currentPercentage = targetPercentage;
+      }
 
-  track.style.transform = `translate(${currentPercentage}%, -50%)`;
-  const objectX = 100 + currentPercentage;
-  const images = track.getElementsByClassName("image");
-  for (const image of images) {
-    image.style.objectPosition = `${objectX}% center`;
-  }
+      track.style.transform = 'translate(' + currentPercentage + '%, -50%)';
+      var objectX = 100 + currentPercentage;
+      var images = track.getElementsByClassName('image');
+      for (var i = 0; i < images.length; i++) {
+        images[i].style.objectPosition = objectX + '% center';
+      }
 
-  if (currentPercentage !== targetPercentage) {
-    rafId = requestAnimationFrame(renderTrack);
-  } else {
-    rafId = null;
-  }
-};
+      if (currentPercentage !== targetPercentage) {
+        rafId = requestAnimationFrame(renderTrack);
+      } else {
+        rafId = null;
+      }
+    };
 
-const scheduleRender = () => {
-  if (rafId === null) {
-    rafId = requestAnimationFrame(renderTrack);
-  }
-};
+    var scheduleRender = function () {
+      if (rafId === null) {
+        rafId = requestAnimationFrame(renderTrack);
+      }
+    };
 
-const handleOnDown = pointerX => {
-  dragged = false;
-  pointerDownAt = pointerX;
-};
+    track.addEventListener('pointerdown', function (e) {
+      dragged = false;
+      pointerDownAt = e.clientX;
+    });
 
-const handleOnUp = () => {
-  pointerDownAt = 0;
-  prevPercentage = targetPercentage;
-};
+    window.addEventListener('pointerup', function () {
+      pointerDownAt = 0;
+      prevPercentage = targetPercentage;
+    });
 
-const handleOnMove = pointerX => {
-  if (!pointerDownAt) return;
+    window.addEventListener('pointermove', function (e) {
+      if (!pointerDownAt) return;
+      var delta = pointerDownAt - e.clientX;
+      if (Math.abs(delta) > 4) dragged = true;
+      var maxDelta = window.innerWidth / 2;
+      var percentage = (delta / maxDelta) * -100;
+      targetPercentage = clamp(prevPercentage + percentage, -100, 0);
+      scheduleRender();
+    });
 
-  const delta = pointerDownAt - pointerX;
-  if (Math.abs(delta) > 4) {
-    dragged = true;
-  }
+    /* ---- Lightbox ---- */
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = document.getElementById('lightbox-img');
+    var lightboxClose = document.querySelector('.lightbox-close');
 
-  const maxDelta = window.innerWidth / 2;
-  const percentage = (delta / maxDelta) * -100;
-  targetPercentage = clamp(prevPercentage + percentage, -100, 0);
-  scheduleRender();
-};
+    var closeLightbox = function () {
+      lightbox.classList.remove('active');
+      document.body.classList.remove('lightbox-open');
+    };
 
-track.addEventListener("pointerdown", e => handleOnDown(e.clientX));
-window.addEventListener("pointerup", handleOnUp);
-window.addEventListener("pointermove", e => handleOnMove(e.clientX));
+    track.addEventListener('click', function (e) {
+      var img = e.target.closest('.image');
+      if (!img || dragged) return;
+      lightbox.classList.add('active');
+      lightboxImg.src = img.currentSrc || img.src;
+      lightboxImg.alt = img.alt;
+      document.body.classList.add('lightbox-open');
+    });
 
-/* LIGHTBOX */
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) closeLightbox();
+    });
 
-track.addEventListener("click", e => {
-  const img = e.target.closest(".image");
-  if (!img || dragged) return;
-  lightbox.classList.add("active");
-  lightboxImg.src = img.currentSrc || img.src;
-  document.body.classList.add("lightbox-open");
-});
+    if (lightboxClose) {
+      lightboxClose.addEventListener('click', closeLightbox);
+    }
 
-lightbox.addEventListener("click", () => {
-  lightbox.classList.remove("active");
-  document.body.classList.remove("lightbox-open");
-});
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
 
-window.addEventListener("keydown", e => {
-  if (e.key === "Escape") {
-    lightbox.classList.remove("active");
-    document.body.classList.remove("lightbox-open");
-  }
-});
-
-scheduleRender();
-</script>
-
+    scheduleRender();
+  </script>
 </body>
 </html>

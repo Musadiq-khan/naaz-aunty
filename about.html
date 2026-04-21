@@ -1,102 +1,33 @@
-﻿                                                                                                                                                                                                                                                                                          <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About â€” Dr. Aishath Ali Naaz</title>
+  <title>About &mdash; Dr. Aishath Ali Naaz</title>
+  <meta name="description" content="Learn about Dr. Aishath Ali Naaz &mdash; her academic journey from Bangalore to Manchester, founding ADAPTS and MIPSTAR, and 25+ years pioneering mental health in the Maldives.">
+  <meta property="og:title" content="About &mdash; Dr. Aishath Ali Naaz">
+  <meta property="og:description" content="The architect of Maldivian mental health. PhD University of Manchester. 25+ years of clinical practice, research, and advocacy.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <link rel="canonical" href="about.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    :root { --black:#0a0a0a; --off-white: #d1cec5; --white:#ffffff; --mid:#888880; --light:#ccc8bf; --accent:#b8a070; }
-    html { scroll-behavior:smooth; }
-    body { font-family:'Jost',sans-serif; background:var(--black); color:var(--off-white); overflow-x:hidden; cursor:none; }
-
-    @media (pointer: fine) {
-      body { cursor: none; }
-      .cursor, .cursor-ring { display: block; }
-    }
-    @media (pointer: coarse) {
-      body { cursor: auto; }
-      .cursor, .cursor-ring { display: none; }
-    }
-
-    .wave-ripple {
-      position: fixed;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      border: 1px solid rgba(184, 160, 112, 0.25);
-      animation: waveExpand 0.8s ease-out forwards;
-      z-index: 9997;
-    }
-    @keyframes waveExpand {
-      0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.5); }
-      100% { opacity: 0; transform: translate(-50%, -50%) scale(3); }
-    }
-    .cursor { width:8px; height:8px; background:var(--accent); border-radius:50%; position:fixed; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:transform .1s,width .3s,height .3s; }
-    .cursor-ring { width:32px; height:32px; border:1px solid rgba(184,160,112,.4); border-radius:50%; position:fixed; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:transform .15s ease-out,width .3s,height .3s; }
-
-    nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:28px 56px; display:flex; align-items:center; justify-content:space-between; mix-blend-mode:difference; }
-    .nav-logo { font-family:'EB Garamond',serif; font-size:.95rem; font-weight:400; letter-spacing:.12em; text-transform:uppercase; color:var(--white); text-decoration:none; }
-    .nav-links { display:flex; gap:36px; list-style:none; }
-    .nav-links a { font-size:.72rem; font-weight:300; letter-spacing:.18em; text-transform:uppercase; color:var(--white); text-decoration:none; opacity:.6; transition:opacity .2s; }
-    .nav-links a:hover, .nav-links a.active { opacity:1; }
-
-    /* ABOUT HERO SECTION */
-    #about-hero { min-height:100vh; background:var(--off-white); color:var(--black); padding:160px 12vw 80px; display:flex; gap:80px; align-items:center; }
-    .about-left { flex:0 0 38%; }
-    .about-left .sec-label { font-size:.62rem; letter-spacing:.35em; text-transform:uppercase; color:var(--accent); margin-bottom:28px; }
-    .about-left h2 { font-family:'EB Garamond',serif; font-size:clamp(2.6rem,4vw,4rem); font-weight:400; line-height:1.1; color:var(--black); }
-    .about-left h2 em { font-style:italic; color:#8a6a30; }
-    .about-right { flex:1; border-left:1px solid rgba(0,0,0,.1); padding-left:72px; }
-    .about-bio p { font-family:'EB Garamond',serif; font-size:1.3rem; line-height:1.75; color:#2a2a2a; margin-bottom:22px; font-weight:400; }
-    .about-bio p strong { color:#8a6a30; font-weight:500; }
-    .about-tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:32px; }
-    .tag { font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; padding:7px 18px; border:1px solid rgba(0,0,0,.15); color:#555; }
-
-    /* PHILOSOPHY SECTION */
-    #philosophy { min-height:60vh; background:var(--black); padding:100px 12vw; display:flex; flex-direction:column; justify-content:center; }
-    .ph-label { font-size:.62rem; letter-spacing:.35em; text-transform:uppercase; color:var(--accent); margin-bottom:28px; }
-    .ph-quote { font-family:'EB Garamond',serif; font-size:clamp(1.8rem,3.2vw,2.8rem); font-weight:400; line-height:1.35; color:var(--white); max-width:900px; }
-    .ph-quote em { font-style:italic; color:var(--accent); }
-    .ph-attr { margin-top:32px; font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.3); }
-
-    /* BACKGROUND / EXTENDED BIO */
-    #background { background:var(--off-white); color:var(--black); padding:100px 12vw; }
-    .bg-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; }
-    .bg-section-label { font-size:.62rem; letter-spacing:.35em; text-transform:uppercase; color:var(--accent); margin-bottom:20px; }
-    .bg-title { font-family:'EB Garamond',serif; font-size:clamp(2rem,3vw,3rem); font-weight:400; color:var(--black); margin-bottom:48px; }
-    .bg-title em { font-style:italic; color:#8a6a30; }
-    .bg-block { margin-bottom:40px; }
-    .bg-block h3 { font-family:'EB Garamond',serif; font-size:1.35rem; color:var(--black); margin-bottom:12px; }
-    .bg-block p { font-family:'EB Garamond',serif; font-size:1.05rem; color:#444; line-height:1.75; }
-    .bg-divider { width:48px; height:1px; background:#8a6a30; margin:32px 0; }
-
-    /* FOOTER */
-    footer { background:var(--black); display:flex; align-items:center; justify-content:center; padding:32px; font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.2); }
-
-    @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
-    .fade-in { opacity:0; }
-    .fade-in.visible { animation:fadeUp .8s cubic-bezier(.22,1,.36,1) both; }
-
-    @media (max-width:900px) {
-      nav { padding:20px 24px; } .nav-links { display:none; }
-      #about-hero { flex-direction:column; padding:120px 6vw 60px; gap:40px; }
-      .about-right { border-left:none; padding-left:0; border-top:1px solid rgba(0,0,0,.1); padding-top:32px; }
-      #philosophy { padding:80px 6vw; }
-      #background { padding:80px 6vw; }
-      .bg-grid { grid-template-columns:1fr; gap:0; }
-    }
-  </style>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/about.css">
+  <noscript><style>.fade-in{opacity:1!important}body{cursor:auto!important}</style></noscript>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
   <div class="cursor" id="cursor"></div>
   <div class="cursor-ring" id="cursorRing"></div>
 
-  <nav>
+  <nav aria-label="Main navigation">
     <a href="index.html" class="nav-logo">Dr. Aishath Ali Naaz</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html" class="active">About</a></li>
@@ -106,101 +37,82 @@
     </ul>
   </nav>
 
-  <!-- ABOUT HERO -->
-  <section id="about-hero">
-    <div class="about-left fade-in">
-      <div class="sec-label">About</div>
-      <h2>The<br><em>Architect</em><br>of Maldivian<br>Mental Health</h2>
-    </div>
-    <div class="about-right fade-in">
-      <div class="about-bio">
-        <p>Dr. Aishath Ali Naaz is the <strong>Maldives' foremost consultant clinical psychologist</strong> â€” a scientist, advocate, and pioneer who has shaped her country's mental health infrastructure for over a quarter century.</p>
-        <p>Her doctoral research at the <strong>University of Manchester</strong> explored the relationship between psychosis, anger, aggression and violence in South Asian subcultures â€” drawing data from India, Sri Lanka, and the Maldives. That work formed the foundation of nationally-informed clinical and policy interventions still in use today.</p>
-        <p>As founder of <strong>MIPSTAR</strong> â€” the Maldives' first private mental health centre â€” she built a two-floor clinical and training institute serving clients island-wide. She was the <strong>first psychologist to give expert evidence in Maldivian courts</strong> and has authored over 17,000 psychological profiles across her career.</p>
+  <main id="main-content">
+    <!-- ABOUT HERO -->
+    <section id="about-hero">
+      <div class="about-left fade-in">
+        <div class="sec-label">About</div>
+        <h1 class="about-h1">The<br><em>Architect</em><br>of Maldivian<br>Mental Health</h1>
       </div>
-      <div class="about-tags">
-        <span class="tag">Clinical Psychology</span>
-        <span class="tag">Forensic Assessment</span>
-        <span class="tag">Child Psychology</span>
-        <span class="tag">CBT Â· DBT Â· EMDR</span>
-        <span class="tag">Policy Consultation</span>
-        <span class="tag">Neurodevelopmental Disorders</span>
-        <span class="tag">Gang Violence</span>
-        <span class="tag">Substance Abuse</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- PHILOSOPHY -->
-  <section id="philosophy">
-    <div class="ph-label fade-in">Clinical Philosophy</div>
-    <p class="ph-quote fade-in">"Mental health is not a privilege of geography or wealth â€” it is a <em>fundamental human right</em> that must be championed at every level of society, from the individual to the institution."</p>
-    <div class="ph-attr fade-in">â€” Dr. Aishath Ali Naaz</div>
-  </section>
-
-  <!-- BACKGROUND -->
-  <section id="background">
-    <div class="bg-section-label fade-in">Background</div>
-    <h2 class="bg-title fade-in">A Life Devoted to <em>Healing</em></h2>
-    <div class="bg-grid">
-      <div>
-        <div class="bg-block fade-in">
-          <h3>Early Life & Formation</h3>
-          <p>Born and raised in the Republic of Maldives, Dr. Naaz pursued her undergraduate studies at Bishop Cotton Women's Christian College in Bangalore, earning a First Class degree in Psychology, Sociology and English Literature. Her academic excellence continued with a PG Diploma in Journalism where she ranked first nationally, before pursuing clinical specialisation at NIMHANS â€” one of South Asia's foremost psychiatric institutions.</p>
+      <div class="about-right fade-in">
+        <div class="about-bio">
+          <p>Dr. Aishath Ali Naaz is the <strong>Maldives' foremost consultant clinical psychologist</strong> a scientist, advocate, and pioneer who has shaped her country's mental health infrastructure for over a quarter century.</p>
+          <p>Her doctoral research at the <strong>University of Manchester</strong> explored the relationship between psychosis, anger, aggression and violence in South Asian subcultures drawing data from India, Sri Lanka, and the Maldives. That work formed the foundation of nationally-informed clinical and policy interventions still in use today.</p>
+          <p>As founder of <strong>MIPSTAR</strong> &mdash; the Maldives' first private mental health centre &mdash; she built a two-floor clinical and training institute serving clients island-wide. She was the <strong>first psychologist to give expert evidence in Maldivian courts</strong> and has authored over 17,000 psychological profiles across her career.</p>
         </div>
-        <div class="bg-divider"></div>
-        <div class="bg-block fade-in">
-          <h3>Doctoral Research</h3>
-          <p>Her PhD at the University of Manchester investigated the complex relationships between psychosis, substance abuse, anger, aggression, and violence within South Asian subcultural contexts â€” drawing on primary data collected across India, Sri Lanka, and the Maldives. This landmark research positioned her as one of the most authoritative voices on mental health in the region.</p>
-        </div>
-        <div class="bg-divider"></div>
-        <div class="bg-block fade-in">
-          <h3>Academic & Literary Life</h3>
-          <p>Beyond clinical work, Dr. Naaz is an accomplished novelist and writer â€” twice winning the Maldivian National Award for Fiction Writing. She has produced and presented television and radio programming on mental health, reaching hundreds of thousands of viewers across the archipelago through her landmark TV series <em>Dr. Naazge Nazarun</em>.</p>
+        <div class="about-tags">
+          <span class="tag">Clinical Psychology</span>
+          <span class="tag">Forensic Assessment</span>
+          <span class="tag">Child Psychology</span>
+          <span class="tag">CBT &middot; DBT &middot; EMDR</span>
+          <span class="tag">Policy Consultation</span>
+          <span class="tag">Neurodevelopmental Disorders</span>
+          <span class="tag">Gang Violence</span>
+          <span class="tag">Substance Abuse</span>
         </div>
       </div>
-      <div>
-        <div class="bg-block fade-in">
-          <h3>Building National Infrastructure</h3>
-          <p>In 2000, Dr. Naaz founded ADAPTS â€” the first dedicated mental health service in the Maldives, bringing together a psychiatrist, clinical psychologist, and specialist educators under one roof. Over two decades, she expanded this into MIPSTAR: a two-floor clinical and training institute serving clients across all 17 inhabited atolls.</p>
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section id="philosophy">
+      <div class="ph-label fade-in">Clinical Philosophy</div>
+      <p class="ph-quote fade-in">&ldquo;Mental health is not a privilege of geography or wealth, it is a <em>fundamental human right</em> that must be championed at every level of society, from the individual to the institution.&rdquo;</p>
+      <div class="ph-attr fade-in">Dr. Aishath Ali Naaz</div>
+    </section>
+
+    <!-- BACKGROUND -->
+    <section id="background">
+      <div class="bg-section-label fade-in">Background</div>
+      <h2 class="bg-title fade-in">A Life Devoted to <em>Healing</em></h2>
+      <div class="bg-grid">
+        <div>
+          <div class="bg-block fade-in">
+            <h3>Early Life &amp; Formation</h3>
+            <p>Born and raised in the Republic of Maldives, Dr. Naaz pursued her undergraduate studies at Bishop Cotton Women's Christian College in Bangalore, earning a First Class degree in Psychology, Sociology and English Literature. Her academic excellence continued with a PG Diploma in Journalism where she ranked first nationally, before pursuing clinical specialisation at NIMHANS one of South Asia's foremost psychiatric institutions.</p>
+          </div>
+          <div class="bg-divider"></div>
+          <div class="bg-block fade-in">
+            <h3>Doctoral Research</h3>
+            <p>Her PhD at the University of Manchester investigated the complex relationships between psychosis, substance abuse, anger, aggression, and violence within South Asian subcultural contexts drawing on primary data collected across India, Sri Lanka, and the Maldives. This landmark research positioned her as one of the most authoritative voices on mental health in the region.</p>
+          </div>
+          <div class="bg-divider"></div>
+          <div class="bg-block fade-in">
+            <h3>Academic &amp; Literary Life</h3>
+            <p>Beyond clinical work, Dr. Naaz is an accomplished novelist and writer twice winning the Maldivian National Award for Fiction Writing. She has produced and presented television and radio programming on mental health, reaching hundreds of thousands of viewers across the archipelago through her landmark TV series <em>Dr. Naazge Nazarun</em>.</p>
+          </div>
         </div>
-        <div class="bg-divider"></div>
-        <div class="bg-block fade-in">
-          <h3>Policy & International Work</h3>
-          <p>Dr. Naaz has served as National Consultant to the Ministry of Health and WHO Maldives, developing the country's Mental Health Strategic Action Plan 2016â€“2021. She has presented at over 30 international conferences across six continents, collaborated with UNICEF, UNDP, and the Strong Cities Network, and sat on human rights bodies of the Maldivian government.</p>
-        </div>
-        <div class="bg-divider"></div>
-        <div class="bg-block fade-in">
-          <h3>Community Service</h3>
-          <p>Her community engagement has reached over 52,000 individuals through free workshops, public lectures, and outreach campaigns. During COVID-19, she delivered 52 free Facebook livestreams on mental health and wellbeing. She personally rehabilitated 69 gang members through free counselling, group therapy, and the 'Bridge to Peace' programme â€” creating tangible pathways to education and employment.</p>
+        <div>
+          <div class="bg-block fade-in">
+            <h3>Building National Infrastructure</h3>
+            <p>In 2000, Dr. Naaz founded ADAPTS &mdash; the first dedicated mental health service in the Maldives, bringing together a psychiatrist, clinical psychologist, and specialist educators under one roof. Over two decades, she expanded this into MIPSTAR: a two-floor clinical and training institute serving clients across all 17 inhabited atolls.</p>
+          </div>
+          <div class="bg-divider"></div>
+          <div class="bg-block fade-in">
+            <h3>Policy &amp; International Work</h3>
+            <p>Dr. Naaz has served as National Consultant to the Ministry of Health and WHO Maldives, developing the country's Mental Health Strategic Action Plan 2016&ndash;2021. She has presented at over 30 international conferences across six continents, collaborated with UNICEF, UNDP, and the Strong Cities Network, and sat on human rights bodies of the Maldivian government.</p>
+          </div>
+          <div class="bg-divider"></div>
+          <div class="bg-block fade-in">
+            <h3>Community Service</h3>
+            <p>Her community engagement has reached over 52,000 individuals through free workshops, public lectures, and outreach campaigns. During COVID-19, she delivered 52 free Facebook livestreams on mental health and wellbeing. She personally rehabilitated 69 gang members through free counselling, group therapy, and the 'Bridge to Peace' programme &mdash; creating tangible pathways to education and employment.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <footer>Â© 2025 Â· Dr. Aishath Ali Naaz Â· Consultant Clinical Psychologist Â· Maldives</footer>
+  <footer>&copy; 2025 &middot; Dr. Aishath Ali Naaz &middot; Consultant Clinical Psychologist &middot; Maldives</footer>
 
-  <script>
-    const cursor=document.getElementById('cursor'), ring=document.getElementById('cursorRing');
-    let mx=0,my=0,rx=0,ry=0;
-    document.addEventListener('mousemove',e=>{ mx=e.clientX; my=e.clientY; cursor.style.left=mx+'px'; cursor.style.top=my+'px'; });
-    (function animRing(){ rx+=(mx-rx)*.12; ry+=(my-ry)*.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(animRing); })();
-    const fadeObs=new IntersectionObserver(entries=>{ entries.forEach((e,i)=>{ if(e.isIntersecting){ e.target.classList.add('visible'); e.target.style.animationDelay=(i*.08)+'s'; } }); },{threshold:.12});
-    document.querySelectorAll('.fade-in').forEach(el=>fadeObs.observe(el));
-
-    let lastRippleTime = 0;
-    document.addEventListener("mousemove", function(e) {
-      const now = Date.now();
-      if (now - lastRippleTime > 80) {
-        const ripple = document.createElement("div");
-        ripple.className = "wave-ripple";
-        ripple.style.left = e.clientX + "px";
-        ripple.style.top = e.clientY + "px";
-        document.body.appendChild(ripple);
-        setTimeout(() => { ripple.remove(); }, 800);
-        lastRippleTime = now;
-      }
-    });
-  </script>
+  <script src="js/global.js"></script>
 </body>
 </html>

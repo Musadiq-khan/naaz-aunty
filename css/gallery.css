@@ -1,0 +1,130 @@
+/* ================================================================
+   GALLERY PAGE — Image Track, Lightbox
+   ================================================================ */
+
+/* Override global body for gallery's drag-based layout */
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 100vh;
+}
+
+/* Gallery uses grab cursor, not custom cursor */
+@media (pointer: fine) {
+  body {
+    cursor: auto;
+  }
+}
+
+/* GALLERY MAIN */
+#gallery-main {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  padding-top: 120px;
+  transition: opacity .3s ease;
+}
+
+/* IMAGE TRACK */
+#image-track {
+  display: flex;
+  gap: 4vmin;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(0%, -50%);
+  will-change: transform;
+  user-select: none;
+  touch-action: pan-y;
+  cursor: grab;
+  contain: layout paint style;
+}
+
+#image-track:active {
+  cursor: grabbing;
+}
+
+#image-track > .image {
+  width: 34vmin;
+  height: 48vmin;
+  object-fit: cover;
+  object-position: 100% center;
+  border-radius: 6px;
+  transition: transform .35s ease, filter .35s ease;
+  will-change: transform, object-position;
+  background: rgba(255, 255, 255, .06);
+}
+
+#image-track > .image:hover {
+  transform: scale(1.03);
+  filter: brightness(1.05);
+}
+
+/* LIGHTBOX */
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s ease;
+}
+
+#lightbox.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#lightbox img {
+  max-width: 90vw;
+  max-height: 85vh;
+  transform: scale(.9);
+  transition: transform .4s ease;
+}
+
+#lightbox.active img {
+  transform: scale(1);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, .3);
+  color: var(--white);
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color .3s;
+  border-radius: 2px;
+}
+
+.lightbox-close:hover {
+  border-color: var(--accent);
+}
+
+body.lightbox-open #gallery-main {
+  opacity: .3;
+  transition: opacity .3s ease;
+}
+
+/* RESPONSIVE — GALLERY */
+@media (max-width: 900px) {
+  #gallery-main {
+    padding-top: 100px;
+  }
+
+  #image-track > .image {
+    width: 56vw;
+    height: 72vw;
+  }
+}
