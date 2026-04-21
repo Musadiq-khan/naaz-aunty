@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,6 +6,8 @@
 <title>Gallery â€” Dr. Aishath Ali Naaz</title>
 
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -32,29 +34,34 @@ top:0;
 left:0;
 right:0;
 z-index:100;
-padding:30px 5vw;
+padding:28px 56px;
 display:flex;
+align-items:center;
 justify-content:space-between;
 mix-blend-mode:difference;
 }
 
 .nav-logo{
 font-family:'EB Garamond',serif;
+font-size:.95rem;
+font-weight:400;
 letter-spacing:.12em;
+text-transform:uppercase;
 text-decoration:none;
 color:white;
 }
 
 .nav-links{
 display:flex;
-gap:40px;
+gap:36px;
 list-style:none;
 }
 
 .nav-links a{
 color:white;
 text-decoration:none;
-font-size:.8rem;
+font-size:.72rem;
+font-weight:300;
 opacity:.6;
 letter-spacing:.18em;
 text-transform:uppercase;
@@ -83,6 +90,7 @@ will-change:transform;
 user-select:none;
 touch-action:pan-y;
 cursor:grab;
+contain:layout paint style;
 }
 
 #image-track:active{
@@ -97,6 +105,7 @@ object-position:100% center;
 border-radius:6px;
 transition:transform .35s ease, filter .35s ease;
 will-change:transform, object-position;
+background:rgba(255,255,255,.06);
 }
 
 #image-track > .image:hover{
@@ -141,6 +150,7 @@ transition:opacity .3s ease;
 
 /* MOBILE */
 @media(max-width:900px){
+nav { padding:20px 24px; }
 .nav-links{display:none;}
 #gallery-main { padding-top: 100px; }
 #image-track > .image{
@@ -159,24 +169,13 @@ height:72vw;
 <li><a href="index.html">Home</a></li>
 <li><a href="about.html">About</a></li>
 <li><a href="services.html">Services</a></li>
-<li><a href="cv.html">CV</a></li>
 <li><a href="gallery.html" class="active">Gallery</a></li>
 <li><a href="contact.html">Contact</a></li>
 </ul>
 </nav>
 
 <section id="gallery-main">
-<div id="image-track" data-mouse-down-at="0" data-prev-percentage="0" data-percentage="0">
-<img class="image" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac" loading="lazy" decoding="async" draggable="false" alt="Gallery image 1">
-<img class="image" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" loading="lazy" decoding="async" draggable="false" alt="Gallery image 2">
-<img class="image" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" loading="lazy" decoding="async" draggable="false" alt="Gallery image 3">
-<img class="image" src="https://images.unsplash.com/photo-1544717305-2782549b5136" loading="lazy" decoding="async" draggable="false" alt="Gallery image 4">
-<img class="image" src="https://images.unsplash.com/photo-1492724441997-5dc865305da7" loading="lazy" decoding="async" draggable="false" alt="Gallery image 5">
-<img class="image" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" loading="lazy" decoding="async" draggable="false" alt="Gallery image 6">
-<img class="image" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e" loading="lazy" decoding="async" draggable="false" alt="Gallery image 7">
-<img class="image" src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" loading="lazy" decoding="async" draggable="false" alt="Gallery image 8">
-<img class="image" src="https://images.unsplash.com/photo-1491553895911-0055eca6402d" loading="lazy" decoding="async" draggable="false" alt="Gallery image 9">
-<img class="image" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429" loading="lazy" decoding="async" draggable="false" alt="Gallery image 10">
+<div id="image-track">
 </div>
 </section>
 
@@ -187,72 +186,122 @@ height:72vw;
 
 <script>
 const track = document.getElementById("image-track");
+const galleryImages = [
+  { id: "1529156069898-49953e39b3ac", alt: "Soft pastel flowers on a dark background" },
+  { id: "1500530855697-b586d89ba3ee", alt: "Mountain landscape at sunrise" },
+  { id: "1521737604893-d14cc237f11d", alt: "Team collaboration around a table" },
+  { id: "1544717305-2782549b5136", alt: "Portrait in warm natural light" },
+  { id: "1492724441997-5dc865305da7", alt: "Creative studio workspace" },
+  { id: "1507525428034-b723cf961d3e", alt: "Ocean waves at golden hour" },
+  { id: "1470770841072-f978cf4d019e", alt: "Misty forest and lake" },
+  { id: "1501785888041-af3ef285b470", alt: "Snowy mountain range panorama" },
+  { id: "1491553895911-0055eca6402d", alt: "Desert road under dramatic sky" },
+  { id: "1500534314209-a25ddb2bd429", alt: "Field landscape with clouds" }
+];
+
+const buildUnsplashUrl = (id, width = 1200, quality = 72) =>
+  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${width}&q=${quality}`;
+
+const createImageNode = ({ id, alt }, index) => {
+  const img = document.createElement("img");
+  img.className = "image";
+  img.alt = alt;
+  img.draggable = false;
+  img.width = 480;
+  img.height = 680;
+  img.loading = index < 2 ? "eager" : "lazy";
+  img.decoding = "async";
+  if (index === 0) {
+    img.fetchPriority = "high";
+  }
+  img.src = buildUnsplashUrl(id, 1200, 72);
+  img.srcset = `${buildUnsplashUrl(id, 600, 70)} 600w, ${buildUnsplashUrl(id, 1200, 72)} 1200w`;
+  img.sizes = "(max-width: 900px) 56vw, 34vmin";
+  return img;
+};
+
+const initGallery = () => {
+  const fragment = document.createDocumentFragment();
+  galleryImages.forEach((image, index) => fragment.appendChild(createImageNode(image, index)));
+  track.appendChild(fragment);
+};
+
+initGallery();
+
 let dragged = false;
+let pointerDownAt = 0;
+let prevPercentage = 0;
+let targetPercentage = 0;
+let currentPercentage = 0;
+let rafId = null;
+
+const clamp = (num, min, max) => Math.max(min, Math.min(num, max));
+
+const renderTrack = () => {
+  currentPercentage += (targetPercentage - currentPercentage) * 0.14;
+
+  if (Math.abs(targetPercentage - currentPercentage) < 0.01) {
+    currentPercentage = targetPercentage;
+  }
+
+  track.style.transform = `translate(${currentPercentage}%, -50%)`;
+  const objectX = 100 + currentPercentage;
+  const images = track.getElementsByClassName("image");
+  for (const image of images) {
+    image.style.objectPosition = `${objectX}% center`;
+  }
+
+  if (currentPercentage !== targetPercentage) {
+    rafId = requestAnimationFrame(renderTrack);
+  } else {
+    rafId = null;
+  }
+};
+
+const scheduleRender = () => {
+  if (rafId === null) {
+    rafId = requestAnimationFrame(renderTrack);
+  }
+};
 
 const handleOnDown = pointerX => {
   dragged = false;
-  track.dataset.mouseDownAt = pointerX;
+  pointerDownAt = pointerX;
 };
 
 const handleOnUp = () => {
-  track.dataset.mouseDownAt = "0";
-  track.dataset.prevPercentage = track.dataset.percentage || "0";
+  pointerDownAt = 0;
+  prevPercentage = targetPercentage;
 };
 
 const handleOnMove = pointerX => {
-  if (track.dataset.mouseDownAt === "0") return;
+  if (!pointerDownAt) return;
 
-  const mouseDelta = parseFloat(track.dataset.mouseDownAt) - pointerX;
-  const maxDelta = window.innerWidth / 2;
-
-  if (Math.abs(mouseDelta) > 4) {
+  const delta = pointerDownAt - pointerX;
+  if (Math.abs(delta) > 4) {
     dragged = true;
   }
 
-  const percentage = (mouseDelta / maxDelta) * -100;
-  const nextPercentageUnconstrained =
-    parseFloat(track.dataset.prevPercentage || "0") + percentage;
-  const nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
-
-  track.dataset.percentage = nextPercentage;
-
-  track.animate(
-    {
-      transform: `translate(${nextPercentage}%, -50%)`
-    },
-    { duration: 1200, fill: "forwards", easing: "ease" }
-  );
-
-  for (const image of track.getElementsByClassName("image")) {
-    image.animate(
-      {
-        objectPosition: `${100 + nextPercentage}% center`
-      },
-      { duration: 1200, fill: "forwards", easing: "ease" }
-    );
-  }
+  const maxDelta = window.innerWidth / 2;
+  const percentage = (delta / maxDelta) * -100;
+  targetPercentage = clamp(prevPercentage + percentage, -100, 0);
+  scheduleRender();
 };
 
-track.addEventListener("mousedown", e => handleOnDown(e.clientX));
-track.addEventListener("touchstart", e => handleOnDown(e.touches[0].clientX), { passive: true });
-
-window.addEventListener("mouseup", handleOnUp);
-window.addEventListener("touchend", handleOnUp);
-
-window.addEventListener("mousemove", e => handleOnMove(e.clientX));
-window.addEventListener("touchmove", e => handleOnMove(e.touches[0].clientX), { passive: true });
+track.addEventListener("pointerdown", e => handleOnDown(e.clientX));
+window.addEventListener("pointerup", handleOnUp);
+window.addEventListener("pointermove", e => handleOnMove(e.clientX));
 
 /* LIGHTBOX */
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
 
-document.querySelectorAll(".image").forEach(img => {
-  img.addEventListener("click", () => {
-    if (dragged) return;
-    lightbox.classList.add("active");
-    lightboxImg.src = img.src;
-    document.body.classList.add("lightbox-open");
-  });
+track.addEventListener("click", e => {
+  const img = e.target.closest(".image");
+  if (!img || dragged) return;
+  lightbox.classList.add("active");
+  lightboxImg.src = img.currentSrc || img.src;
+  document.body.classList.add("lightbox-open");
 });
 
 lightbox.addEventListener("click", () => {
@@ -266,6 +315,8 @@ window.addEventListener("keydown", e => {
     document.body.classList.remove("lightbox-open");
   }
 });
+
+scheduleRender();
 </script>
 
 </body>
