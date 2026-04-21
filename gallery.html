@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gallery — Dr. Aishath Ali Naaz</title>
+<title>Gallery â€” Dr. Aishath Ali Naaz</title>
 
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -21,58 +21,8 @@ body{
 font-family:'Jost',sans-serif;
 background:var(--black);
 color:var(--white);
-overflow-x:hidden;
-cursor: none;
-}
-
-@media (pointer: fine) {
-  body { cursor: none; }
-  .cursor, .cursor-ring { display: block; }
-}
-@media (pointer: coarse) {
-  body { cursor: auto; }
-  .cursor, .cursor-ring { display: none; }
-}
-
-.cursor {
-  width: 8px;
-  height: 8px;
-  background: var(--accent);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s, width 0.3s, height 0.3s;
-}
-
-.cursor-ring {
-  width: 32px;
-  height: 32px;
-  border: 1px solid rgba(184, 160, 112, 0.4);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: transform 0.15s ease-out, width 0.3s, height 0.3s;
-}
-
-.wave-ripple {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  border: 1px solid rgba(184, 160, 112, 0.25);
-  animation: waveExpand 0.8s ease-out forwards;
-  z-index: 9997;
-}
-
-@keyframes waveExpand {
-  0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.5); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(3); }
+overflow:hidden;
+min-height:100vh;
 }
 
 /* NAV */
@@ -115,54 +65,43 @@ text-transform:uppercase;
 
 /* GALLERY */
 #gallery-main{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-gap:18vh;
-padding:120px 0;
+height:100vh;
 position:relative;
-overflow-x:hidden;
+overflow:hidden;
+padding-top:120px;
+transition:opacity .3s ease;
 }
 
-.track-wrapper{
-position:relative;
-width:100%;
-height:48vmin;
-}
-
-.track-title{
-position:absolute;
-left:8vw;
-top:-40px;
-font-family:'EB Garamond',serif;
-letter-spacing:.2em;
-text-transform:uppercase;
-color:var(--accent);
-}
-
-.image-track{
+#image-track{
 display:flex;
 gap:4vmin;
 position:absolute;
 left:50%;
 top:50%;
-transform:translate3d(0,-50%,0);
+transform:translate(0%, -50%);
 will-change:transform;
 user-select:none;
+touch-action:pan-y;
+cursor:grab;
 }
 
-.image{
+#image-track:active{
+cursor:grabbing;
+}
+
+#image-track > .image{
 width:34vmin;
 height:48vmin;
 object-fit:cover;
+object-position:100% center;
 border-radius:6px;
-transition:transform .3s ease;
+transition:transform .35s ease, filter .35s ease;
+will-change:transform, object-position;
 }
 
-.image:hover{
-transform:scale(1.05);
+#image-track > .image:hover{
+transform:scale(1.03);
+filter:brightness(1.05);
 }
 
 /* LIGHTBOX */
@@ -196,22 +135,23 @@ transform:scale(1);
 }
 
 body.lightbox-open #gallery-main{
-filter:blur(6px) brightness(.4);
+opacity:.3;
+transition:opacity .3s ease;
 }
 
 /* MOBILE */
 @media(max-width:900px){
 .nav-links{display:none;}
-#gallery-main { gap: 10vh; padding: 100px 0; }
-.track-wrapper { height: 40vh; }
+#gallery-main { padding-top: 100px; }
+#image-track > .image{
+width:56vw;
+height:72vw;
+}
 }
 </style>
 </head>
 
 <body>
-
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
 
 <nav>
 <a href="index.html" class="nav-logo">Dr. Aishath Ali Naaz</a>
@@ -226,29 +166,18 @@ filter:blur(6px) brightness(.4);
 </nav>
 
 <section id="gallery-main">
-
-<div class="track-wrapper">
-<h2 class="track-title">Professional</h2>
-<div class="image-track" data-mouse-down-at="0" data-prev-percentage="0">
-<img class="image" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac" loading="lazy" decoding="async">
-<img class="image" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" loading="lazy" decoding="async">
-<img class="image" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" loading="lazy" decoding="async">
-<img class="image" src="https://images.unsplash.com/photo-1544717305-2782549b5136" loading="lazy" decoding="async">
-<img class="image" src="https://images.unsplash.com/photo-1492724441997-5dc865305da7" loading="lazy" decoding="async">
+<div id="image-track" data-mouse-down-at="0" data-prev-percentage="0" data-percentage="0">
+<img class="image" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac" loading="lazy" decoding="async" draggable="false" alt="Gallery image 1">
+<img class="image" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" loading="lazy" decoding="async" draggable="false" alt="Gallery image 2">
+<img class="image" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" loading="lazy" decoding="async" draggable="false" alt="Gallery image 3">
+<img class="image" src="https://images.unsplash.com/photo-1544717305-2782549b5136" loading="lazy" decoding="async" draggable="false" alt="Gallery image 4">
+<img class="image" src="https://images.unsplash.com/photo-1492724441997-5dc865305da7" loading="lazy" decoding="async" draggable="false" alt="Gallery image 5">
+<img class="image" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" loading="lazy" decoding="async" draggable="false" alt="Gallery image 6">
+<img class="image" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e" loading="lazy" decoding="async" draggable="false" alt="Gallery image 7">
+<img class="image" src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" loading="lazy" decoding="async" draggable="false" alt="Gallery image 8">
+<img class="image" src="https://images.unsplash.com/photo-1491553895911-0055eca6402d" loading="lazy" decoding="async" draggable="false" alt="Gallery image 9">
+<img class="image" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429" loading="lazy" decoding="async" draggable="false" alt="Gallery image 10">
 </div>
-</div>
-
-<div class="track-wrapper">
-<h2 class="track-title">Travels</h2>
-<div class="image-track" data-mouse-down-at="0" data-prev-percentage="0">
-<img class="image" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" loading="lazy" decoding="async">
-<img class="image" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e" loading="lazy" decoding="async">
-<img class="image" src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" loading="lazy" decoding="async">
-<img class="image" src="https://images.unsplash.com/photo-1491553895911-0055eca6402d" loading="lazy" decoding="async">
-<img class="image" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429" loading="lazy" decoding="async">
-</div>
-</div>
-
 </section>
 
 <!-- LIGHTBOX -->
@@ -257,127 +186,84 @@ filter:blur(6px) brightness(.4);
 </div>
 
 <script>
+const track = document.getElementById("image-track");
+let dragged = false;
 
-/* SMOOTH DRAG SYSTEM */
-const tracks = document.querySelectorAll(".image-track");
+const handleOnDown = pointerX => {
+  dragged = false;
+  track.dataset.mouseDownAt = pointerX;
+};
 
-tracks.forEach(track => {
-  let mouseDownAt = 0;
-  let percentage = 0;
-  let targetPercentage = 0;
-  let prevPercentage = 0;
+const handleOnUp = () => {
+  track.dataset.mouseDownAt = "0";
+  track.dataset.prevPercentage = track.dataset.percentage || "0";
+};
 
-  /* Mouse down */
-  track.addEventListener("mousedown", e => {
-    mouseDownAt = e.clientX;
-  });
+const handleOnMove = pointerX => {
+  if (track.dataset.mouseDownAt === "0") return;
 
-  /* Mouse up */
-  window.addEventListener("mouseup", () => {
-    mouseDownAt = 0;
-    prevPercentage = targetPercentage;
-  });
+  const mouseDelta = parseFloat(track.dataset.mouseDownAt) - pointerX;
+  const maxDelta = window.innerWidth / 2;
 
-  /* Mouse move */
-  window.addEventListener("mousemove", e => {
-    if (mouseDownAt === 0) return;
-
-    const delta = mouseDownAt - e.clientX;
-    const maxDelta = window.innerWidth / 2;
-
-    const movePercentage = (delta / maxDelta) * -100;
-    targetPercentage = Math.max(Math.min(prevPercentage + movePercentage, 0), -100);
-  });
-
-  /* Touch support */
-  track.addEventListener("touchstart", e => {
-    mouseDownAt = e.touches[0].clientX;
-  });
-
-  window.addEventListener("touchend", () => {
-    mouseDownAt = 0;
-    prevPercentage = targetPercentage;
-  });
-
-  window.addEventListener("touchmove", e => {
-    if (mouseDownAt === 0) return;
-
-    const delta = mouseDownAt - e.touches[0].clientX;
-    const maxDelta = window.innerWidth / 2;
-
-    const movePercentage = (delta / maxDelta) * -100;
-    targetPercentage = Math.max(Math.min(prevPercentage + movePercentage, 0), -100);
-  });
-
-  /* Smooth animation loop */
-  function animate() {
-    percentage += (targetPercentage - percentage) * 0.08;
-    track.style.transform = `translate3d(${percentage}%, -50%, 0)`;
-    requestAnimationFrame(animate);
+  if (Math.abs(mouseDelta) > 4) {
+    dragged = true;
   }
 
-  animate();
-});
+  const percentage = (mouseDelta / maxDelta) * -100;
+  const nextPercentageUnconstrained =
+    parseFloat(track.dataset.prevPercentage || "0") + percentage;
+  const nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
+
+  track.dataset.percentage = nextPercentage;
+
+  track.animate(
+    {
+      transform: `translate(${nextPercentage}%, -50%)`
+    },
+    { duration: 1200, fill: "forwards", easing: "ease" }
+  );
+
+  for (const image of track.getElementsByClassName("image")) {
+    image.animate(
+      {
+        objectPosition: `${100 + nextPercentage}% center`
+      },
+      { duration: 1200, fill: "forwards", easing: "ease" }
+    );
+  }
+};
+
+track.addEventListener("mousedown", e => handleOnDown(e.clientX));
+track.addEventListener("touchstart", e => handleOnDown(e.touches[0].clientX), { passive: true });
+
+window.addEventListener("mouseup", handleOnUp);
+window.addEventListener("touchend", handleOnUp);
+
+window.addEventListener("mousemove", e => handleOnMove(e.clientX));
+window.addEventListener("touchmove", e => handleOnMove(e.touches[0].clientX), { passive: true });
 
 /* LIGHTBOX */
-const lightbox=document.getElementById("lightbox");
-const lightboxImg=document.getElementById("lightbox-img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
 
-document.querySelectorAll(".image").forEach(img=>{
-img.addEventListener("click",()=>{
-lightbox.classList.add("active");
-lightboxImg.src=img.src;
-document.body.classList.add("lightbox-open");
-});
-});
-
-lightbox.addEventListener("click",()=>{
-lightbox.classList.remove("active");
-document.body.classList.remove("lightbox-open");
+document.querySelectorAll(".image").forEach(img => {
+  img.addEventListener("click", () => {
+    if (dragged) return;
+    lightbox.classList.add("active");
+    lightboxImg.src = img.src;
+    document.body.classList.add("lightbox-open");
+  });
 });
 
-window.addEventListener("keydown",e=>{
-if(e.key==="Escape"){
-lightbox.classList.remove("active");
-document.body.classList.remove("lightbox-open");
-}
-});
-/* CURSOR TRACKING */
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursorRing');
-let mx = 0, my = 0, rx = 0, ry = 0;
-
-document.addEventListener('mousemove', e => {
-  mx = e.clientX;
-  my = e.clientY;
-  if (cursor) {
-    cursor.style.left = mx + 'px';
-    cursor.style.top = my + 'px';
-  }
+lightbox.addEventListener("click", () => {
+  lightbox.classList.remove("active");
+  document.body.classList.remove("lightbox-open");
 });
 
-(function animRing() {
-  rx += (mx - rx) * 0.12;
-  ry += (my - ry) * 0.12;
-  if (ring) {
-    ring.style.left = rx + 'px';
-    ring.style.top = ry + 'px';
-  }
-  requestAnimationFrame(animRing);
-})();
-
-/* RIPPLE EFFECT */
-let lastRippleTime = 0;
-document.addEventListener("mousemove", function(e) {
-  const now = Date.now();
-  if (now - lastRippleTime > 80) {
-    const ripple = document.createElement("div");
-    ripple.className = "wave-ripple";
-    ripple.style.left = e.clientX + "px";
-    ripple.style.top = e.clientY + "px";
-    document.body.appendChild(ripple);
-    setTimeout(() => { ripple.remove(); }, 800);
-    lastRippleTime = now;
+window.addEventListener("keydown", e => {
+  if (e.key === "Escape") {
+    lightbox.classList.remove("active");
+    document.body.classList.remove("lightbox-open");
   }
 });
 </script>
