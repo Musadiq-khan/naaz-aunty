@@ -168,7 +168,9 @@
     padding: 80px 6vw;
   }
 
-  #background {
+  #background,
+  #work-history,
+  #awards {
     padding: 80px 6vw;
   }
 
@@ -176,4 +178,42 @@
     grid-template-columns: 1fr;
     gap: 0;
   }
+}
+
+/* WORK HISTORY — Uses same patterns as #background */
+#work-history {
+  background: var(--black);
+  color: var(--white);
+  padding: 100px 12vw;
+}
+
+#work-history .bg-section-label {
+  color: var(--accent);
+}
+
+#work-history .bg-title {
+  color: var(--white);
+}
+
+#work-history .bg-title em {
+  color: var(--accent);
+}
+
+#work-history .bg-block h3 {
+  color: var(--white);
+}
+
+#work-history .bg-block p {
+  color: rgba(255, 255, 255, .6);
+}
+
+#work-history .bg-divider {
+  background: rgba(255, 255, 255, .1);
+}
+
+/* AWARDS — Uses off-white background */
+#awards {
+  background: var(--off-white);
+  color: var(--black);
+  padding: 100px 12vw;
 }

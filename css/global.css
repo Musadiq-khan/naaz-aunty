@@ -120,7 +120,7 @@ nav {
 
 .nav-links {
   display: flex;
-  gap: 36px;
+  gap: 28px;
   list-style: none;
 }
 
