@@ -1,5 +1,5 @@
 /* ================================================================
-   GALLERY PAGE — Image Track, Lightbox
+   GALLERY PAGE — Multi-Row Image Tracks, Lightbox
    ================================================================ */
 
 /* Override global body for gallery's drag-based layout */
@@ -16,35 +16,79 @@ body {
   }
 }
 
-/* GALLERY MAIN */
+/* GALLERY MAIN — Vertical stack of rows */
 #gallery-main {
-  height: 100vh;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6vmin;
+  padding: 120px 0 80px;
   overflow: hidden;
-  padding-top: 120px;
-  transition: opacity .3s ease;
+  min-height: 100vh;
 }
 
-/* IMAGE TRACK */
-#image-track {
+/* ROW WRAPPER */
+.gallery-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vmin;
+  overflow: hidden;
+}
+
+/* ROW TITLE */
+.row-title {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(1.2rem, 2.5vmin, 1.8rem);
+  font-weight: 400;
+  color: var(--off-white);
+  letter-spacing: 0.06em;
+  padding-left: 4vmin;
+  margin: 0;
+}
+
+/* IMAGE TRACK — Each row
+   Uses left: 50% to start images from center of viewport,
+   matching the original single-track layout.
+   Transform is controlled entirely by JS for drag animation. */
+.image-track {
   display: flex;
   gap: 4vmin;
-  position: absolute;
+  position: relative;
   left: 50%;
-  top: 50%;
-  transform: translate(0%, -50%);
+  transform: translateX(0%);
   will-change: transform;
   user-select: none;
   touch-action: pan-y;
   cursor: grab;
-  contain: layout paint style;
+  flex-shrink: 0;
+
+  /* Entrance: opacity only — no transform here to avoid
+     conflicting with JS-driven drag transforms */
+  opacity: 0;
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-#image-track:active {
+/* Staggered entrance delays */
+.image-track:nth-child(1)  { transition-delay: 0s; }
+.image-track:nth-child(2)  { transition-delay: 0.08s; }
+.image-track:nth-child(3)  { transition-delay: 0.16s; }
+.image-track:nth-child(4)  { transition-delay: 0.24s; }
+.image-track:nth-child(5)  { transition-delay: 0.32s; }
+.image-track:nth-child(6)  { transition-delay: 0.40s; }
+.image-track:nth-child(7)  { transition-delay: 0.48s; }
+.image-track:nth-child(8)  { transition-delay: 0.56s; }
+.image-track:nth-child(9)  { transition-delay: 0.64s; }
+
+/* Visible state — triggered by IntersectionObserver */
+.image-track.visible {
+  opacity: 1;
+}
+
+.image-track:active {
   cursor: grabbing;
 }
 
-#image-track > .image {
+/* IMAGE CARDS — same dimensions as original */
+.image-track > .image {
   width: 34vmin;
   height: 48vmin;
   object-fit: cover;
@@ -53,9 +97,10 @@ body {
   transition: transform .35s ease, filter .35s ease;
   will-change: transform, object-position;
   background: rgba(255, 255, 255, .06);
+  flex-shrink: 0;
 }
 
-#image-track > .image:hover {
+.image-track > .image:hover {
   transform: scale(1.03);
   filter: brightness(1.05);
 }
@@ -121,10 +166,28 @@ body.lightbox-open #gallery-main {
 @media (max-width: 900px) {
   #gallery-main {
     padding-top: 100px;
+    padding-bottom: 60px;
+    gap: 3vmin;
   }
 
-  #image-track > .image {
+  .image-track {
+    gap: 3vmin;
+  }
+
+  .image-track > .image {
     width: 56vw;
     height: 72vw;
+  }
+}
+
+@media (max-width: 480px) {
+  #gallery-main {
+    padding-top: 80px;
+    gap: 2vmin;
+  }
+
+  .image-track > .image {
+    width: 70vw;
+    height: 88vw;
   }
 }
