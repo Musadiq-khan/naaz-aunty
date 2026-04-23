@@ -11,7 +11,7 @@
   flex-direction: column;
   justify-content: flex-end;
   position: relative;
-  overflow: hidden;
+  overflow: hidden
 }
 
 #community-header::after {
