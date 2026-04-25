@@ -24,6 +24,12 @@
   background-size: 200px;
 }
 
+.sec-label {
+  font-size: 1.2rem;
+  font-weight: 900;
+  margin-bottom: 1.2rem;
+}
+
 /* CONTACT MAIN */
 #contact-main {
   background: var(--off-white);
@@ -55,7 +61,7 @@
 
 .ct-left p {
   font-family: 'EB Garamond', serif;
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   color: #444;
   line-height: 1.7;
   margin-bottom: 40px;
@@ -69,18 +75,19 @@
 
 .cd-item {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 16px;
-  font-size: .85rem;
+  font-size: 1.1rem;
   color: #333;
 }
 
 .cd-label {
-  font-size: .62rem;
-  letter-spacing: .15em;
+  font-size: .85rem;
+  font-weight: 900;
+  letter-spacing: .1em;
   text-transform: uppercase;
-  color: #999;
-  width: 80px;
+  color: #555;
+  width: 100px;
   flex-shrink: 0;
 }
 
@@ -108,13 +115,21 @@
 
 .lr-label {
   font-family: 'EB Garamond', serif;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: var(--black);
 }
 
 .lr-arr {
-  font-size: .85rem;
-  color: #aaa;
+  width: 18px;
+  height: 18px;
+  color: var(--accent-dark);
+  opacity: .5;
+  transition: transform .3s, opacity .3s;
+}
+
+.link-row:hover .lr-arr {
+  opacity: 1;
+  transform: translate(3px, -3px);
 }
 
 /* AVAILABILITY */
@@ -124,8 +139,9 @@
 }
 
 .avail-label {
-  font-size: .62rem;
-  letter-spacing: .35em;
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: .15em;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 20px;
@@ -133,7 +149,7 @@
 
 .avail-title {
   font-family: 'EB Garamond', serif;
-  font-size: clamp(2rem, 3vw, 3.2rem);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 400;
   color: var(--white);
   margin-bottom: 56px;
@@ -160,23 +176,30 @@
 }
 
 .avail-icon {
-  font-size: 1.5rem;
-  margin-bottom: 16px;
-  opacity: .65;
+  width: 32px;
+  height: 32px;
+  color: var(--accent);
+  margin-bottom: 20px;
+  opacity: .8;
+}
+
+.avail-icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 .avail-name {
   font-family: 'EB Garamond', serif;
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   color: var(--white);
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .avail-desc {
-  font-size: .8rem;
+  font-size: 1.05rem;
   font-weight: 300;
   color: var(--mid);
-  line-height: 1.75;
+  line-height: 1.6;
 }
 
 /* RESPONSIVE — CONTACT */

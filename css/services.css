@@ -43,6 +43,11 @@
   line-height: 1.75;
   color: #444;
 }
+.sec-label {
+  font-size: 1.2rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
 
 .services-grid {
   display: grid;
@@ -65,7 +70,7 @@
 .srv-num {
   font-family: 'EB Garamond', serif;
   font-size: 3rem;
-  color: rgba(0, 0, 0, .06);
+  color: #555;
   line-height: 1;
   margin-bottom: 20px;
 }
@@ -84,10 +89,10 @@
 }
 
 .srv-body {
-  font-size: .85rem;
+  font-size: 1.05rem;
   font-weight: 300;
-  color: #666;
-  line-height: 1.8;
+  color: #555;
+  line-height: 1.7;
 }
 
 .srv-tags {
@@ -114,8 +119,9 @@
 }
 
 .aud-label {
-  font-size: .62rem;
-  letter-spacing: .35em;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: .15em;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 20px;
@@ -123,7 +129,7 @@
 
 .aud-title {
   font-family: 'EB Garamond', serif;
-  font-size: clamp(2rem, 3vw, 3.2rem);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 400;
   color: var(--white);
   margin-bottom: 56px;
@@ -150,20 +156,28 @@
 }
 
 .aud-icon {
-  font-size: 1.4rem;
-  margin-bottom: 16px;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 24px;
   opacity: .7;
+  color: var(--accent);
+}
+
+.aud-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 1.5;
 }
 
 .aud-name {
   font-family: 'EB Garamond', serif;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: var(--white);
   margin-bottom: 8px;
 }
 
 .aud-desc {
-  font-size: .8rem;
+  font-size: 1.15rem;
   font-weight: 300;
   color: var(--mid);
   line-height: 1.7;
@@ -194,7 +208,7 @@
 }
 
 .cta-text p {
-  font-size: .85rem;
+  font-size: 1rem;
   color: #777;
   letter-spacing: .05em;
 }

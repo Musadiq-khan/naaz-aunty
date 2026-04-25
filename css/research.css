@@ -25,6 +25,24 @@
   background-size: 200px;
 }
 
+.services-intro {
+  max-width: 640px;
+  margin-bottom: 72px;
+}
+
+.services-intro p {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.25rem;
+  line-height: 1.75;
+  color: #444;
+}
+
+.sec-label {
+  font-size: 1.2rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
+
 /* FEATURED PUBLICATIONS */
 #featured-pubs {
   background: var(--off-white);
@@ -53,7 +71,7 @@
 .pub-year {
   font-family: 'EB Garamond', serif;
   font-size: 2.4rem;
-  color: rgba(0, 0, 0, .06);
+  color: #555;
   line-height: 1;
   margin-bottom: 16px;
 }
@@ -72,10 +90,10 @@
 }
 
 .pub-desc {
-  font-size: .82rem;
+  font-size: 1.05rem;
   font-weight: 300;
-  color: #666;
-  line-height: 1.8;
+  color: #555;
+  line-height: 1.7;
 }
 
 .pub-tags {
@@ -102,8 +120,9 @@
 }
 
 .rp-label {
-  font-size: .62rem;
-  letter-spacing: .35em;
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: .15em;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 20px;
@@ -111,7 +130,7 @@
 
 .rp-title {
   font-family: 'EB Garamond', serif;
-  font-size: clamp(2rem, 3vw, 3rem);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 400;
   color: var(--white);
   margin-bottom: 56px;
@@ -130,11 +149,23 @@
 
 .rp-item {
   display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: 32px;
-  padding: 28px 0;
+  grid-template-columns: 100px 40px 1fr;
+  gap: 24px;
+  padding: 32px 0;
   border-bottom: 1px solid rgba(255, 255, 255, .06);
-  align-items: baseline;
+  align-items: center;
+}
+
+.rp-item-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--accent);
+  opacity: .7;
+}
+
+.rp-item-icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 .rp-item:first-child {
@@ -149,9 +180,9 @@
 
 .rp-item-text {
   font-family: 'EB Garamond', serif;
-  font-size: 1.05rem;
-  color: rgba(255, 255, 255, .7);
-  line-height: 1.65;
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, .8);
+  line-height: 1.6;
 }
 
 /* EXTERNAL LINKS */
@@ -162,8 +193,9 @@
 }
 
 .ext-label {
-  font-size: .62rem;
-  letter-spacing: .35em;
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: .15em;
   text-transform: uppercase;
   color: var(--accent-dark);
   margin-bottom: 20px;
@@ -171,7 +203,7 @@
 
 .ext-title {
   font-family: 'EB Garamond', serif;
-  font-size: clamp(2rem, 3vw, 3rem);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 400;
   color: var(--black);
   margin-bottom: 48px;
@@ -208,8 +240,16 @@
 }
 
 #external-links .lr-arr {
-  font-size: .85rem;
-  color: #aaa;
+  width: 18px;
+  height: 18px;
+  color: var(--accent-dark);
+  opacity: .5;
+  transition: transform .3s, opacity .3s;
+}
+
+#external-links .link-row:hover .lr-arr {
+  opacity: 1;
+  transform: translate(3px, -3px);
 }
 
 /* RESPONSIVE */
