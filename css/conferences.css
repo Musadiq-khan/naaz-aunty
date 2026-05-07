@@ -71,7 +71,7 @@
 .role-year {
   font-family: 'EB Garamond', serif;
   font-size: 2.4rem;
-  color: #555;
+  color: #292929;
   line-height: 1;
   margin-bottom: 14px;
 }
@@ -139,8 +139,8 @@
 }
 
 .cp-item-icon {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   color: var(--accent);
   opacity: .7;
 }
@@ -186,6 +186,10 @@
   background: var(--off-white);
   padding: 36px 40px;
   transition: background .3s;
+}
+
+.rpres-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
 }
 
 .rpres-card:hover {

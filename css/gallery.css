@@ -93,7 +93,7 @@ body {
   height: 48vmin;
   object-fit: cover;
   object-position: 100% center;
-  border-radius: 6px;
+  border-radius: 0;
   transition: transform .35s ease, filter .35s ease;
   will-change: transform, object-position;
   background: rgba(255, 255, 255, .06);

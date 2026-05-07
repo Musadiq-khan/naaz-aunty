@@ -37,13 +37,25 @@ body {
 
 /* POINTER-BASED CURSOR */
 @media (pointer: fine) {
-  body { cursor: none; }
-  .cursor, .cursor-ring { display: block; }
+  body {
+    cursor: none;
+  }
+
+  .cursor,
+  .cursor-ring {
+    display: block;
+  }
 }
 
 @media (pointer: coarse) {
-  body { cursor: auto; }
-  .cursor, .cursor-ring { display: none; }
+  body {
+    cursor: auto;
+  }
+
+  .cursor,
+  .cursor-ring {
+    display: none;
+  }
 }
 
 /* CUSTOM CURSOR */
@@ -270,7 +282,7 @@ nav {
 /* ---- FOOTER ---- */
 footer {
   background: #050505;
-  color: rgba(255, 255, 255, .3);
+  color: rgba(255, 255, 255, 0.075);
   padding: 60px 12vw;
   border-top: 1px solid rgba(255, 255, 255, .05);
   text-align: center;
@@ -295,6 +307,7 @@ footer {
   footer {
     padding: 40px 6vw;
   }
+
   .footer-line {
     gap: 8px;
     line-height: 1.8;
@@ -303,8 +316,15 @@ footer {
 
 /* ---- ANIMATIONS ---- */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .fade-in {
@@ -392,6 +412,7 @@ footer {
    REDUCED MOTION — Accessibility
    ================================================================ */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {

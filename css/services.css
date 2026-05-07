@@ -43,6 +43,7 @@
   line-height: 1.75;
   color: #444;
 }
+
 .sec-label {
   font-size: 1.2rem;
   font-weight: 900;
@@ -110,6 +111,15 @@
   border: 1px solid rgba(0, 0, 0, .15);
   color: #777;
   border-radius: 2px;
+  cursor: default;
+  transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+}
+
+.srv-tag:hover {
+  transform: translateY(-3px);
+  background: var(--accent-dark);
+  color: var(--white);
+  border-color: var(--accent-dark);
 }
 
 /* AUDIENCE SECTION */

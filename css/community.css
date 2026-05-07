@@ -44,7 +44,7 @@
 }
 
 .impact-intro p {
-  font-family: 'EB Garamond', serif;
+  font-family: 'Times New Roman', Times, serif;
   font-size: 1.25rem;
   line-height: 1.75;
   color: #444;
@@ -69,7 +69,7 @@
 }
 
 .imp-stat-num {
-  font-family: 'EB Garamond', serif;
+  font-family: 'Times New Roman', Times, serif;
   font-size: 2.8rem;
   color: var(--accent-dark);
   line-height: 1;
@@ -95,7 +95,7 @@
 }
 
 .topics-title {
-  font-family: 'EB Garamond', serif;
+  font-family: 'Times New Roman', Times, serif;
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 400;
   color: var(--black);
@@ -122,6 +122,15 @@
   border: 1px solid rgba(0, 0, 0, .2);
   color: #333;
   border-radius: 2px;
+  cursor: default;
+  transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+}
+
+.topic-tag:hover {
+  transform: translateY(-3px);
+  background: var(--accent-dark);
+  color: var(--white);
+  border-color: var(--accent-dark);
 }
 
 /* COMMUNITY TIMELINE */
@@ -140,7 +149,7 @@
 }
 
 .ct-title {
-  font-family: 'EB Garamond', serif;
+  font-family: 'Times New Roman', Times, serif;
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 400;
   color: var(--white);
@@ -169,13 +178,21 @@
 .tl-item-icon {
   width: 24px;
   height: 24px;
+  max-width: 24px;
+  max-height: 24px;
+  overflow: hidden;
+  flex-shrink: 0;
   color: var(--accent);
   opacity: .7;
+  display: block;
 }
 
 .tl-item-icon svg {
-  width: 100%;
-  height: 100%;
+  width: 24px;
+  height: 24px;
+  max-width: 24px;
+  max-height: 24px;
+  display: block;
 }
 
 .tl-item:first-child {
@@ -183,15 +200,15 @@
 }
 
 .tl-year {
-  font-family: 'EB Garamond', serif;
-  font-size: 1.15rem;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.3rem;
   color: var(--accent);
   white-space: nowrap;
 }
 
 .tl-text {
-  font-family: 'EB Garamond', serif;
-  font-size: 1.25rem;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.3rem;
   color: rgba(255, 255, 255, .8);
   line-height: 1.6;
 }
@@ -230,7 +247,7 @@
 }
 
 .media-title {
-  font-family: 'EB Garamond', serif;
+  font-family: 'Times New Roman', Times, serif;
   font-size: 1.15rem;
   color: var(--black);
   margin-bottom: 8px;

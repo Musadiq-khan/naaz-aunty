@@ -90,7 +90,7 @@
 }
 
 .pub-desc {
-  font-size: 1.05rem;
+  font-size: 1.3rem;
   font-weight: 300;
   color: #555;
   line-height: 1.7;
@@ -111,6 +111,15 @@
   border: 1px solid rgba(0, 0, 0, .15);
   color: #777;
   border-radius: 2px;
+  cursor: default;
+  transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+}
+
+.pub-tag:hover {
+  transform: translateY(-3px);
+  background: var(--accent-dark);
+  color: var(--white);
+  border-color: var(--accent-dark);
 }
 
 /* RESEARCH PROJECTS */
@@ -174,7 +183,7 @@
 
 .rp-item-year {
   font-family: 'EB Garamond', serif;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   color: var(--accent);
 }
 
