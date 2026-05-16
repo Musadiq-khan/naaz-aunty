@@ -2,18 +2,11 @@
    GALLERY PAGE — Multi-Row Image Tracks, Lightbox
    ================================================================ */
 
-/* Override global body for gallery's drag-based layout */
+/* Override global body for gallery layout */
 body {
   overflow-x: hidden;
   overflow-y: auto;
   min-height: 100vh;
-}
-
-/* Gallery uses grab cursor, not custom cursor */
-@media (pointer: fine) {
-  body {
-    cursor: auto;
-  }
 }
 
 /* GALLERY MAIN — Vertical stack of rows */
@@ -45,10 +38,9 @@ body {
   margin: 0;
 }
 
-/* IMAGE TRACK — Each row
-   Uses left: 50% to start images from center of viewport,
-   matching the original single-track layout.
-   Transform is controlled entirely by JS for drag animation. */
+/* ----------------------------------------------------------------
+   IMAGE TRACK — Desktop: JS-driven drag with translateX
+   ---------------------------------------------------------------- */
 .image-track {
   display: flex;
   gap: 4vmin;
@@ -61,8 +53,7 @@ body {
   cursor: grab;
   flex-shrink: 0;
 
-  /* Entrance: opacity only — no transform here to avoid
-     conflicting with JS-driven drag transforms */
+  /* Entrance fade — opacity only, never conflicts with JS transforms */
   opacity: 0;
   transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -87,7 +78,7 @@ body {
   cursor: grabbing;
 }
 
-/* IMAGE CARDS — same dimensions as original */
+/* IMAGE CARDS */
 .image-track > .image {
   width: 34vmin;
   height: 48vmin;
@@ -162,32 +153,109 @@ body.lightbox-open #gallery-main {
   transition: opacity .3s ease;
 }
 
-/* RESPONSIVE — GALLERY */
+/* ================================================================
+   RESPONSIVE — MOBILE (≤ 900 px)
+   Switch to native CSS horizontal scrolling with snap.
+   ================================================================ */
 @media (max-width: 900px) {
   #gallery-main {
     padding-top: 100px;
     padding-bottom: 60px;
-    gap: 3vmin;
+    gap: 8vw;
+    /* Allow rows to overflow horizontally (scroll inside .image-track) */
+    overflow: visible;
   }
 
+  .gallery-row {
+    gap: 8px;
+    overflow: visible;
+  }
+
+  /* Row title gets a subtle left margin on mobile */
+  .row-title {
+    padding-left: 5vw;
+    font-size: clamp(1rem, 4vw, 1.4rem);
+  }
+
+  /* ---- Native-scroll track on mobile ---- */
   .image-track {
-    gap: 3vmin;
+    /* Remove the desktop centering hack */
+    position: static;
+    left: auto;
+    transform: translateX(0) !important; /* reset any JS transform */
+
+    /* Native horizontal scroll */
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch; /* iOS momentum */
+
+    /* Scroll snap */
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    /* Let browser own horizontal swipes */
+    touch-action: pan-x;
+    cursor: default;
+
+    /* Visual padding so first/last cards have breathing room */
+    padding-left: 5vw;
+    padding-right: 5vw;
+
+    /* Gap between cards */
+    gap: 4vw;
+
+    /* Hide scrollbar — keeps the UI clean */
+    scrollbar-width: none;       /* Firefox */
+    -ms-overflow-style: none;    /* IE / Edge */
   }
 
+  /* Hide WebKit scrollbar */
+  .image-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Card sizing for mobile */
   .image-track > .image {
-    width: 56vw;
-    height: 72vw;
+    width: 72vw;
+    height: 90vw;
+    object-position: center center;
+    flex-shrink: 0;
+
+    /* Snap each card to center */
+    scroll-snap-align: center;
+
+    /* Slight scale-down for non-active cards is achieved with
+       CSS only — active card pops to full opacity */
+    transition: opacity .3s ease, transform .3s ease, filter .3s ease;
+  }
+
+  /* Disable hover scale — not useful on touch */
+  .image-track > .image:hover {
+    transform: none;
+    filter: none;
+  }
+
+  /* Lightbox: larger close button for touch targets */
+  .lightbox-close {
+    width: 48px;
+    height: 48px;
+    top: 16px;
+    right: 16px;
+    font-size: 1.4rem;
   }
 }
 
+/* ================================================================
+   RESPONSIVE — SMALL MOBILE (≤ 480 px)
+   ================================================================ */
 @media (max-width: 480px) {
   #gallery-main {
     padding-top: 80px;
-    gap: 2vmin;
+    gap: 10vw;
   }
 
   .image-track > .image {
-    width: 70vw;
-    height: 88vw;
+    width: 80vw;
+    height: 100vw;
   }
 }

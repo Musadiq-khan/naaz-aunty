@@ -93,12 +93,12 @@
 }
 
 #philosophy .ph-label {
-  font-size: .62rem;
-  font-weight: 400;
-  letter-spacing: .35em;
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: .15em;
   text-transform: uppercase;
   color: var(--accent-dark);
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 
 #philosophy .ph-quote {
@@ -120,7 +120,7 @@
   font-size: .7rem;
   letter-spacing: .2em;
   text-transform: uppercase;
-  color: #888;
+  color: #686565;
 }
 
 /* BACKGROUND / EXTENDED BIO */

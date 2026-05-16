@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gallery &mdash; Dr. Aishath Ali Naaz</title>
-  <meta name="description" content="Photo gallery showcasing Dr. Aishath Ali Naaz's career &mdash; conferences, community outreach, clinical practice, and media appearances across the Maldives and internationally.">
+  <meta name="description"
+    content="Photo gallery showcasing Dr. Aishath Ali Naaz's career &mdash; conferences, community outreach, clinical practice, and media appearances across the Maldives and internationally.">
   <meta property="og:title" content="Gallery &mdash; Dr. Aishath Ali Naaz">
-  <meta property="og:description" content="Photo gallery of Dr. Aishath Ali Naaz's career highlights across 25+ years of clinical practice and advocacy.">
+  <meta property="og:description"
+    content="Photo gallery of Dr. Aishath Ali Naaz's career highlights across 25+ years of clinical practice and advocacy.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
   <link rel="canonical" href="gallery.html">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Jost:wght@300;400;500&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/gallery.css">
-  <noscript><style>.fade-in{opacity:1!important}body{cursor:auto!important}.image-track{opacity:1!important;transform:none!important}</style></noscript>
+  <noscript>
+    <style>
+      .fade-in {
+        opacity: 1 !important
+      }
+
+      .image-track {
+        opacity: 1 !important;
+        transform: none !important
+      }
+    </style>
+  </noscript>
 </head>
-<body>
+
+<body data-page="gallery">
   <a href="#main-content" class="skip-link">Skip to content</a>
 
-  <nav aria-label="Main navigation">
-    <a href="index.html" class="nav-logo">Dr. Aishath Ali Naaz</a>
-    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="research.html">Research</a></li>
-      <li><a href="conferences.html">Conferences</a></li>
-      <li><a href="community.html">Community</a></li>
-      <li><a href="gallery.html" class="active">Gallery</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
+  <div id="nav-placeholder"></div>
 
   <main id="main-content">
     <h1 class="sr-only">Photo Gallery &mdash; Dr. Aishath Ali Naaz</h1>
@@ -51,96 +52,70 @@
     <img id="lightbox-img" alt="">
   </div>
 
-  <footer>
-    <div class="footer-line">
-      &copy; 2025 <span>&middot;</span> Dr. Aishath Ali Naaz <span>&middot;</span> Consultant Clinical Psychologist <span>&middot;</span> Maldives
-    </div>
-  </footer>
+  <div id="footer-placeholder"></div>
 
   <script src="js/global.js"></script>
   <script>
     /* ================================================================
-       Gallery — Multi-Row Drag Scroll
-       Each row is independently draggable with parallax object-position
+       Gallery — Adaptive Scroll
+       Desktop  : JS drag-to-scroll with RAF parallax
+       Mobile   : Native CSS overflow-x scroll + scroll-snap (CSS handles it)
        ================================================================ */
 
     var galleryMain = document.getElementById('gallery-main');
 
-    /* Placeholder images — to be replaced with actual career photos */
+    /* ---- Mobile detection ---- */
+    var MOBILE_BP = 900;
+    var coarseQuery = window.matchMedia ? window.matchMedia('(pointer: coarse)') : null;
+
+    function isMobile() {
+      return window.innerWidth <= MOBILE_BP ||
+        (coarseQuery && coarseQuery.matches);
+    }
+
+    /* ---- Placeholder image data ---- */
     var allImages = [
-      /* Row 1 */
-      { id: '1529156069898-49953e39b3ac', alt: 'Soft pastel flowers on a dark background' },
-      { id: '1500530855697-b586d89ba3ee', alt: 'Mountain landscape at sunrise' },
+      { src: 'gallery_photos/Meemu Dhiggaru importance of keeping active for positive mental health.jpg', alt: 'Meemu Dhiggaru importance of keeping active for positive mental health' },
+      { src: 'D:\full stack dev\naaz aunty\it\gallery_photos\Meemu Dhiggaru.jpg', alt: 'Meemu Dhiggaru' },
       { id: '1521737604893-d14cc237f11d', alt: 'Team collaboration around a table' },
       { id: '1544717305-2782549b5136', alt: 'Portrait in warm natural light' },
       { id: '1492724441997-5dc865305da7', alt: 'Creative studio workspace' },
       { id: '1507525428034-b723cf961d3e', alt: 'Ocean waves at golden hour' },
-      /* Row 2 */
       { id: '1470770841072-f978cf4d019e', alt: 'Misty forest and lake' },
       { id: '1501785888041-af3ef285b470', alt: 'Snowy mountain range panorama' },
       { id: '1491553895911-0055eca6402d', alt: 'Desert road under dramatic sky' },
       { id: '1500534314209-a25ddb2bd429', alt: 'Field landscape with clouds' },
       { id: '1506744038136-46273834b3fb', alt: 'Autumn forest pathway' },
       { id: '1519681393784-d120267933ba', alt: 'Starry mountain night' },
-      /* Row 3 */
       { id: '1475924156734-496f6cac6ec1', alt: 'Calm lake reflection' },
       { id: '1490730141103-6cac27aaab94', alt: 'Tropical green canopy' },
       { id: '1441974231531-c6227db76b6e', alt: 'Lush forest interior' },
       { id: '1505228395891-9a51e7e86bf6', alt: 'Pier extending into calm sea' },
       { id: '1469474968028-56623f02e42e', alt: 'Canyon rock formations' },
       { id: '1465146344425-f00d5f5c8f07', alt: 'Wide open meadow' },
-      /* Row 4 */
       { id: '1470071459604-3b5ec3a7fe05', alt: 'Waterfall in tropical forest' },
       { id: '1501854140801-50d01698950b', alt: 'Aerial view of coastline' },
       { id: '1464822759023-fed622ff2c3b', alt: 'Dramatic sky over field' },
       { id: '1518495973542-4542c06a5843', alt: 'Silhouette against sunset' },
       { id: '1477346611705-65d1883cee1e', alt: 'Snow covered pine trees' },
       { id: '1509316975850-ff9c5deb0cd9', alt: 'Autumn leaves close-up' },
-      /* Row 5 */
       { id: '1472214103451-9374bd1c798e', alt: 'Lavender field at dusk' },
       { id: '1433086966358-54859d0ed716', alt: 'Northern lights over lake' },
       { id: '1494500764479-0c8f2919a3d8', alt: 'Night city skyline' },
       { id: '1476842634003-7dcca8f832de', alt: 'Rainbow over green hills' },
       { id: '1497436072909-60f360e1d4b1', alt: 'Turquoise mountain lake' },
       { id: '1504701954957-2010ec3bcec1', alt: 'City bridge at twilight' },
-      /* Row 6 */
       { id: '1490682143684-14369e18dce8', alt: 'Foggy morning lakeside' },
       { id: '1502082553048-f009c37129b9', alt: 'Misty mountain peaks' },
-      { id: '1500382017468-9049fed747ef', alt: 'Sandy desert dunes' },
-      { id: '1507400492013-162706c8c05e', alt: 'Green hillside vineyard' },
-      { id: '1473081556163-2a17de81fc97', alt: 'Sunflower field panorama' },
-      { id: '1531366936337-7c912a4589a7', alt: 'Blue ice cave interior' },
-      /* Row 7 */
-      { id: '1504567961542-e24d9439a724', alt: 'Glowing sunset clouds' },
-      { id: '1508739773434-c26b3d09e071', alt: 'Reflection in still water' },
-      { id: '1542202229-7d93c33f5d07', alt: 'Abstract light painting' },
-      { id: '1485470733090-0aae1788d668', alt: 'Wildflowers in sunlight' },
-      { id: '1534088568595-a066f410bcda', alt: 'Hot air balloons at dawn' },
-      { id: '1526749837244-6c13dc9aa818', alt: 'Blooming cherry blossom tree' },
-      /* Row 8 */
-      { id: '1529156069898-49953e39b3ac', alt: 'Flowers on dark background' },
-      { id: '1507525428034-b723cf961d3e', alt: 'Golden hour ocean' },
-      { id: '1470770841072-f978cf4d019e', alt: 'Forest and lake mist' },
-      { id: '1501785888041-af3ef285b470', alt: 'Snowy mountain panorama' },
-      { id: '1500530855697-b586d89ba3ee', alt: 'Mountain at sunrise' },
-      { id: '1519681393784-d120267933ba', alt: 'Mountain night sky' },
-      /* Row 9 */
-      { id: '1506744038136-46273834b3fb', alt: 'Autumn pathway' },
-      { id: '1475924156734-496f6cac6ec1', alt: 'Lake reflection' },
-      { id: '1465146344425-f00d5f5c8f07', alt: 'Open meadow landscape' },
-      { id: '1470071459604-3b5ec3a7fe05', alt: 'Tropical waterfall' },
-      { id: '1473081556163-2a17de81fc97', alt: 'Sunflower panorama' },
-      { id: '1497436072909-60f360e1d4b1', alt: 'Mountain lake turquoise' }
+      { id: '1500382017468-9049fed747ef', alt: 'Sandy desert dunes' }
     ];
 
-    /* Distribute images across rows (6 images per row) */
     var IMAGES_PER_ROW = 6;
     var ROW_COUNT = 9;
 
     var buildUnsplashUrl = function (id, width, quality) {
-      width = width || 1200;
-      quality = quality || 72;
-      return 'https://images.unsplash.com/photo-' + id + '?auto=format&fit=crop&w=' + width + '&q=' + quality;
+      return 'https://images.unsplash.com/photo-' + id +
+        '?auto=format&fit=crop&w=' + (width || 1200) + '&q=' + (quality || 72);
     };
 
     var createImageNode = function (data, isEager) {
@@ -152,41 +127,39 @@
       img.height = 680;
       img.loading = isEager ? 'eager' : 'lazy';
       img.decoding = 'async';
-      img.src = buildUnsplashUrl(data.id, 1200, 72);
-      img.srcset = buildUnsplashUrl(data.id, 600, 70) + ' 600w, ' + buildUnsplashUrl(data.id, 1200, 72) + ' 1200w';
-      img.sizes = '(max-width: 900px) 56vw, 30vmin';
+
+      if (data.src) {
+        /* Local image — use path directly */
+        img.src = data.src;
+      } else {
+        /* Unsplash placeholder */
+        img.src = buildUnsplashUrl(data.id, 1200, 72);
+        img.srcset = buildUnsplashUrl(data.id, 600, 70) + ' 600w, ' +
+          buildUnsplashUrl(data.id, 1200, 72) + ' 1200w';
+        img.sizes = '(max-width: 900px) 75vw, 34vmin';
+      }
       return img;
     };
 
-    /* ---- Row Titles ---- */
     var rowTitles = [
-      'Clinical Leadership',
-      'Community Outreach',
-      'Conferences & Global Forums',
-      'Media & Public Education',
-      'Training & Workshops',
-      'Awards & Recognition',
-      'Research & Publications',
-      'MIPSTAR & ADAPTS',
-      'Life & Legacy'
+      'Meemu Dhiggaru', 'Community Outreach', 'Conferences & Global Forums',
+      'Media & Public Education', 'Training & Workshops', 'Awards & Recognition',
+      'Research & Publications', 'MIPSTAR & ADAPTS', 'Life & Legacy'
     ];
 
-    /* ---- Build Rows ---- */
+    /* ---- Build rows ---- */
     var trackStates = [];
     var imageIndex = 0;
 
     for (var r = 0; r < ROW_COUNT; r++) {
-      /* Wrapper */
       var rowEl = document.createElement('div');
       rowEl.className = 'gallery-row';
 
-      /* Title */
       var titleEl = document.createElement('h2');
       titleEl.className = 'row-title';
       titleEl.textContent = rowTitles[r] || 'Gallery';
       rowEl.appendChild(titleEl);
 
-      /* Track (unchanged) */
       var trackEl = document.createElement('div');
       trackEl.className = 'image-track';
       trackEl.setAttribute('data-row', r);
@@ -203,20 +176,15 @@
       galleryMain.appendChild(rowEl);
 
       trackStates.push({
-        el: trackEl,
-        dragged: false,
-        pointerDownAt: 0,
-        prevPercentage: 0,
-        targetPercentage: 0,
-        currentPercentage: 0,
-        rafId: null
+        el: trackEl, dragged: false, pointerDownAt: 0,
+        prevPercentage: 0, targetPercentage: 0, currentPercentage: 0, rafId: null
       });
     }
 
-    /* ---- Shared Helpers ---- */
-    var clamp = function (num, min, max) {
-      return Math.max(min, Math.min(num, max));
-    };
+    /* ================================================================
+       DESKTOP — drag helpers
+       ================================================================ */
+    var clamp = function (num, min, max) { return Math.max(min, Math.min(num, max)); };
 
     var createRenderer = function (state) {
       return function render() {
@@ -224,19 +192,14 @@
         if (Math.abs(state.targetPercentage - state.currentPercentage) < 0.01) {
           state.currentPercentage = state.targetPercentage;
         }
-
         state.el.style.transform = 'translateX(' + state.currentPercentage + '%)';
         var objectX = 100 + state.currentPercentage;
-        var images = state.el.getElementsByClassName('image');
-        for (var j = 0; j < images.length; j++) {
-          images[j].style.objectPosition = objectX + '% center';
+        var imgs = state.el.getElementsByClassName('image');
+        for (var j = 0; j < imgs.length; j++) {
+          imgs[j].style.objectPosition = objectX + '% center';
         }
-
-        if (state.currentPercentage !== state.targetPercentage) {
-          state.rafId = requestAnimationFrame(render);
-        } else {
-          state.rafId = null;
-        }
+        state.rafId = (state.currentPercentage !== state.targetPercentage)
+          ? requestAnimationFrame(render) : null;
       };
     };
 
@@ -246,15 +209,24 @@
       }
     };
 
-    /* ---- Per-Row Drag Handling ---- */
+    /* Reset a track to neutral mobile state */
+    var resetTrackForMobile = function (state) {
+      if (state.rafId !== null) { cancelAnimationFrame(state.rafId); state.rafId = null; }
+      state.el.style.transform = 'translateX(0%)';
+      state.el.style.touchAction = 'pan-x';
+      state.targetPercentage = state.currentPercentage = state.prevPercentage = 0;
+      var imgs = state.el.getElementsByClassName('image');
+      for (var k = 0; k < imgs.length; k++) { imgs[k].style.objectPosition = ''; }
+    };
+
+    /* ---- Drag listeners (desktop only) ---- */
     var activeState = null;
 
     galleryMain.addEventListener('pointerdown', function (e) {
-      var trackEl = e.target.closest('.image-track');
-      if (!trackEl) return;
-
-      var row = parseInt(trackEl.getAttribute('data-row'), 10);
-      activeState = trackStates[row];
+      if (isMobile()) return;
+      var track = e.target.closest('.image-track');
+      if (!track) return;
+      activeState = trackStates[parseInt(track.getAttribute('data-row'), 10)];
       activeState.dragged = false;
       activeState.pointerDownAt = e.clientX;
     });
@@ -267,34 +239,35 @@
     });
 
     window.addEventListener('pointermove', function (e) {
-      if (!activeState || !activeState.pointerDownAt) return;
+      if (isMobile() || !activeState || !activeState.pointerDownAt) return;
       var delta = activeState.pointerDownAt - e.clientX;
       if (Math.abs(delta) > 4) activeState.dragged = true;
-      var maxDelta = window.innerWidth / 2;
-      var percentage = (delta / maxDelta) * -100;
-      activeState.targetPercentage = clamp(activeState.prevPercentage + percentage, -100, 0);
+      var pct = (delta / (window.innerWidth / 2)) * -100;
+      activeState.targetPercentage = clamp(activeState.prevPercentage + pct, -100, 0);
       scheduleRender(activeState);
     });
 
-    /* ---- Entrance Animation via IntersectionObserver ---- */
+    /* ---- Resize handler — reset if crossing mobile breakpoint ---- */
+    var lastMobileState = isMobile();
+    window.addEventListener('resize', function () {
+      var nowMobile = isMobile();
+      if (nowMobile && !lastMobileState) { trackStates.forEach(resetTrackForMobile); }
+      lastMobileState = nowMobile;
+    });
+
+    /* ---- Entrance animation ---- */
     if ('IntersectionObserver' in window) {
-      var entranceObserver = new IntersectionObserver(function (entries) {
+      var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            entranceObserver.unobserve(entry.target);
+            io.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-
-      trackStates.forEach(function (state) {
-        entranceObserver.observe(state.el);
-      });
+      }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+      trackStates.forEach(function (s) { io.observe(s.el); });
     } else {
-      /* Fallback: show all rows immediately */
-      trackStates.forEach(function (state) {
-        state.el.classList.add('visible');
-      });
+      trackStates.forEach(function (s) { s.el.classList.add('visible'); });
     }
 
     /* ---- Lightbox ---- */
@@ -307,37 +280,31 @@
       document.body.classList.remove('lightbox-open');
     };
 
+    /*
+     * Click/tap handler — works on both desktop and mobile.
+     * Native scroll fires 'click' on tap-without-drag, so lightbox
+     * opens correctly. Desktop drags are suppressed via state.dragged.
+     */
     galleryMain.addEventListener('click', function (e) {
       var img = e.target.closest('.image');
       if (!img) return;
-
-      /* Find which row this image belongs to */
-      var trackEl = img.closest('.image-track');
-      if (!trackEl) return;
-      var row = parseInt(trackEl.getAttribute('data-row'), 10);
-      var state = trackStates[row];
-      if (state.dragged) return;
-
+      var track = img.closest('.image-track');
+      if (!track) return;
+      var state = trackStates[parseInt(track.getAttribute('data-row'), 10)];
+      if (!isMobile() && state.dragged) return;   /* desktop: suppress if dragged */
       lightbox.classList.add('active');
       lightboxImg.src = img.currentSrc || img.src;
       lightboxImg.alt = img.alt;
       document.body.classList.add('lightbox-open');
     });
 
-    lightbox.addEventListener('click', function (e) {
-      if (e.target === lightbox) closeLightbox();
-    });
+    lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
+    if (lightboxClose) { lightboxClose.addEventListener('click', closeLightbox); }
+    window.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLightbox(); });
 
-    if (lightboxClose) {
-      lightboxClose.addEventListener('click', closeLightbox);
-    }
-
-    window.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeLightbox();
-    });
-
-    /* Initial render for first row */
-    scheduleRender(trackStates[0]);
+    /* Initial desktop render */
+    if (!isMobile()) { scheduleRender(trackStates[0]); }
   </script>
+
 </body>
-</html>
+< </html>

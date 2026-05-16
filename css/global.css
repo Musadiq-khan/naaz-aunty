@@ -35,53 +35,7 @@ body {
   overflow-x: hidden;
 }
 
-/* POINTER-BASED CURSOR */
-@media (pointer: fine) {
-  body {
-    cursor: none;
-  }
 
-  .cursor,
-  .cursor-ring {
-    display: block;
-  }
-}
-
-@media (pointer: coarse) {
-  body {
-    cursor: auto;
-  }
-
-  .cursor,
-  .cursor-ring {
-    display: none;
-  }
-}
-
-/* CUSTOM CURSOR */
-.cursor {
-  width: 8px;
-  height: 8px;
-  background: var(--accent);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform .1s, width .3s, height .3s;
-}
-
-.cursor-ring {
-  width: 32px;
-  height: 32px;
-  border: 1px solid rgba(184, 160, 112, .4);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: transform .15s ease-out, width .3s, height .3s;
-}
 
 
 
