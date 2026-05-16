@@ -2,26 +2,11 @@
    CONTACT PAGE — Header, Info, Availability
    ================================================================ */
 
-/* HEADER */
+/* HEADER — overrides .page-header defaults specific to contact */
 #contact-header {
   min-height: 50vh;
-  background: var(--black);
-  padding: 160px 12vw 60px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  position: relative;
-  overflow: hidden;
-}
-
-#contact-header::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: .035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-size: 200px;
+  /* contact header is shorter than other pages */
+  padding-bottom: 60px;
 }
 
 .sec-label {
@@ -212,9 +197,6 @@
 
 /* RESPONSIVE — CONTACT */
 @media (max-width: 900px) {
-  #contact-header {
-    padding: 120px 6vw 60px;
-  }
 
   #contact-main {
     padding: 80px 6vw;
