@@ -37,38 +37,51 @@ var galleryData = [
   {
     title: 'Meemu Dhiggaru',
     images: [
-      { src: 'gallery_photos/Meemu Dhiggaru importance of keeping active for positive mental health.jpg', alt: 'Meemu Dhiggaru — importance of keeping active for positive mental health' },
-      { src: 'gallery_photos/Meemu Dhiggaru.jpg', alt: 'Meemu Dhiggaru' },
-      { id: '1521737604893-d14cc237f11d', alt: 'Team collaboration around a table' },
-      { id: '1544717305-2782549b5136',   alt: 'Portrait in warm natural light' },
-      { id: '1492724441997-5dc865305da7', alt: 'Creative studio workspace' },
-      { id: '1507525428034-b723cf961d3e', alt: 'Ocean waves at golden hour' }
+      { src: 'gallery_photos/meemu/meemu dhiggaru2.jpg', alt: 'meemu dhiggaru importance of keeping active for positive mental health' },
+      { src: 'gallery_photos/meemu/Meemu Dhiggaru.jpg', alt: 'meemu dhiggaru' },
+      { src: 'gallery_photos/meemu/meemu dhiggaru workshop.jpg', alt: 'meemu dhiggaru a workshop for teachers on how they can further support special needs children' },
+      { src: 'gallery_photos/meemu/meemu dhiggaru awareness.jpg', alt: 'meemu dhiggaru creating mental health awareness' },
+      { src: 'gallery_photos/meemu/meemu dhiggaru students.jpg', alt: 'meemu dhiggaru the students said they have gained knowledge about mental health issues' },
+      { src: 'gallery_photos/meemu/meemu dhiggaru students2.jpg', alt: 'meemu dhiggaru creating mental health awareness among students' },
+      { src: 'gallery_photos/meemu/meemu dhiggaru honored.jpg', alt: 'meemu dhiggaru Honored me with these after the training programs to celebrate world mental health day 2022' }
     ]
   },
 
   /* ── ROW 2 ─────────────────────────────────────────────────── */
   {
-    title: 'Community Outreach',
+    title: 'Hirilandhoo community development program',
     images: [
-      { id: '1470770841072-f978cf4d019e', alt: 'Misty forest and lake' },
-      { id: '1501785888041-af3ef285b470', alt: 'Snowy mountain range panorama' },
-      { id: '1491553895911-0055eca6402d', alt: 'Desert road under dramatic sky' },
-      { id: '1500534314209-a25ddb2bd429', alt: 'Field landscape with clouds' },
-      { id: '1506744038136-46273834b3fb', alt: 'Autumn forest pathway' },
-      { id: '1519681393784-d120267933ba', alt: 'Starry mountain night' }
+      { src: 'gallery_photos/hirilandhoo/hirilandhoo  workshop.jpg', alt: 'hirilandhoo  workshop' },
+      { src: 'gallery_photos/hirilandhoo/hirilandhoo community members.jpg', alt: 'hirilandhoo community members says the awareness content went to their mind and heart' },
+      { src: 'gallery_photos/hirilandhoo/hirilandhoo students2.jpg', alt: 'hirilandhoo students appreciated the awareness program' },
+      { src: 'gallery_photos/hirilandhoo/hirilandhoo students.jpg', alt: 'hirilandhoo a mental health awareness worksop for students' },
+      { src: 'gallery_photos/hirilandhoo/th hirilandhoo parents.jpg', alt: 'the hirilandhoo A free mental heath awareness workshop for parents' },
+      { src: 'gallery_photos/hirilandhoo/hirilandhoo.jpg', alt: 'hirilandhoo honouring with gifts' },
+      { src: 'gallery_photos/hirilandhoo/hirilandhoo community.jpg', alt: 'hirilandhoo Community In dialogue on what can be done to improve the mental health of island community' }
     ]
   },
 
   /* ── ROW 3 ─────────────────────────────────────────────────── */
   {
-    title: 'Conferences & Global Forums',
+    title: 'Trainings and Workshops',
     images: [
-      { id: '1475924156734-496f6cac6ec1', alt: 'Calm lake reflection' },
-      { id: '1490730141103-6cac27aaab94', alt: 'Tropical green canopy' },
-      { id: '1441974231531-c6227db76b6e', alt: 'Lush forest interior' },
-      { id: '1505228395891-9a51e7e86bf6', alt: 'Pier extending into calm sea' },
-      { id: '1469474968028-56623f02e42e', alt: 'Canyon rock formations' },
-      { id: '1465146344425-f00d5f5c8f07', alt: 'Wide open meadow' }
+      { src: 'gallery_photos/training-and-workshop/ba atoll fulhadhoo.jpg', alt: 'Ba Atoll Fulhadhoo and interactive session on mental health issues' },
+      { src: 'gallery_photos/training-and-workshop/baa atoll kihaadhoo.jpg', alt: 'baa atoll kihaadhoo interactive session on mental health issues' },
+      { src: 'gallery_photos/training-and-workshop/hdh kulhudhifushi.jpg', alt: 'training of Hdh Kulhudhuhfushi Health care staff on Mental health first aid' },
+      { src: 'gallery_photos/training-and-workshop/baa dharavandhoo.jpg', alt: 'Baa Dharavandhoo A workshop on mental health awareness' },
+      { src: 'gallery_photos/training-and-workshop/baa eydhafushi.jpg', alt: 'Baa Eydhafushi a workshop on psychological first aid' },
+      { src: 'gallery_photos/training-and-workshop/baa eydhafushi2.jpg', alt: 'Baa Eydhafushi creating mental health awareness' },
+      { src: 'gallery_photos/training-and-workshop/gdh fiyoari.jpg', alt: 'Gdh Fiyoari the training content went to our head and heart' },
+      { src: 'gallery_photos/training-and-workshop/gdh fiyoree.jpg', alt: 'Gdh Fiyoree a training on mental health awareness' },
+      { src: 'gallery_photos/training-and-workshop/gdh thinadhoo.jpg', alt: 'Gdh Thinadhoo A workshop on mental health awareness for teachers' },
+      { src: 'gallery_photos/training-and-workshop/hulhumale.jpg', alt: 'Hulhumale creating awareness on mental health and distrubuting my books 2022' },
+      { src: 'gallery_photos/training-and-workshop/s feydhoo.jpg', alt: 'S feydhoo A workshop on mental health awareness' },
+      { src: 'gallery_photos/training-and-workshop/sh foakaidhoo.jpg', alt: 'Sh Foakaidhoo a mental health awareness workshop' },
+      { src: 'gallery_photos/training-and-workshop/sh kanditheemu.jpg', alt: 'Free mental health awareness workshop in Sh Kanditheemu' },
+      { src: 'gallery_photos/training-and-workshop/sh kanditheemu2.jpg', alt: 'Sh Kanditheemu A mental health awareness workshop' },
+      { src: 'gallery_photos/training-and-workshop/sh kanitheemu workshop.jpg', alt: 'sh kanitheemu a workshop for parents' },
+      { src: 'gallery_photos/training-and-workshop/th thimarafush.jpg', alt: 'Th Thimarafushi A workshop for teacher on mental health awareness' }
+
     ]
   },
 
@@ -106,7 +119,7 @@ var galleryData = [
       { id: '1502082553048-f009c37129b9', alt: 'Misty mountain peaks' },
       { id: '1500382017468-9049fed747ef', alt: 'Sandy desert dunes' },
       { id: '1521737604893-d14cc237f11d', alt: 'Team collaboration around a table' },
-      { id: '1544717305-2782549b5136',   alt: 'Portrait in warm natural light' },
+      { id: '1544717305-2782549b5136', alt: 'Portrait in warm natural light' },
       { id: '1492724441997-5dc865305da7', alt: 'Creative studio workspace' }
     ]
   },
